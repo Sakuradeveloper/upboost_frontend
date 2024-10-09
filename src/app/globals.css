@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+*{
+  font-family: "Montserrat","Kosugi","Noto Sans Japanese", sans-serif !important
+}
+
+
+*::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+*::-webkit-scrollbar-track {
+  --bg-opacity: 1;
+  background-color: #EEE4;
+}
+
+*::-webkit-scrollbar-thumb {
+  --bg-opacity: 1;
+  border-color: #573001;
+  background-color: #0008;
+  border-radius: 0.25rem;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 0.25rem;
+}
+

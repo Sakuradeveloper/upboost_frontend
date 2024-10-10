@@ -26,6 +26,7 @@
     "@schedule-x/resize": "^1.58.1",
     "@schedule-x/scroll-controller": "^1.58.1",
     "@schedule-x/theme-default": "^1.58.1",
+    "@stripe/stripe-js": "^4.8.0",
     "@vercel/analytics": "^1.2.2",
     "axios": "^1.6.7",
     "cookies-next": "^4.1.1",

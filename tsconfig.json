@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/templates/layout/components/MainCard.js", "src/components/templates/layout/sections/ProfileSection.js", "src/components/templates/layout/components/Transitions.js", "src/components/templates/layout/components/Transitions.js", "src/components/templates/layout/components/Transitions.js", "src/components/templates/layout/components/MainCard.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/templates/layout/components/MainCard.js", "src/components/templates/layout/sections/ProfileSection.js", "src/components/templates/layout/components/Transitions.js", "src/components/templates/layout/components/Transitions.js", "src/components/templates/layout/components/Transitions.js", "src/components/templates/layout/components/MainCard.js", "src/app/students/application/test"],
   "exclude": ["node_modules"]
 }

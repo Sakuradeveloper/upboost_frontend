@@ -1,10 +1,20 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { IUser } from '@/interfaces';
 import { getRequest } from '@/utils/axios';
+import { Moment } from 'moment';
 
 type State = {
 	item: {
 		form: {
+            condition:string;
+            plan:string;
+            otherPlan:string;
+            recording:string;
+            book:string;
+            vocabulary:string;
+            payment:string;
+            startDate:string|null;
+            reason:string|null;
 			id?: number;
 			name: string;
 			email:string;
@@ -18,7 +28,6 @@ type State = {
 			secondChoiceTime: string;
 			region: string;
 			characterCount: number;
-			plan: string[];
 			vietnameseDialect: string;
 			studyPurpose: string[];
 			purposes: {
@@ -62,6 +71,15 @@ type State = {
 const initialState: State = {
 	item: {
 		form: {
+            condition:'',
+            plan: '',
+            otherPlan:'',
+            recording:'',
+            book:'',
+            vocabulary:'',
+            payment:'',
+            startDate:'',
+            reason:'',
 			name: '',
 			nameKana: '',
 			email: '',
@@ -74,7 +92,6 @@ const initialState: State = {
 			secondChoiceTime: '',
 			region: '',
 			characterCount: 0,
-			plan: [] as string[],
 			vietnameseDialect: '',
 			studyPurpose: [] as string[],
 			purposes: {

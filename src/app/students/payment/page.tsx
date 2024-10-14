@@ -1,6 +1,6 @@
 'use client';
 
-import Payment from '@/components/pages/customers/students/chat/ChatPage';
+import Payment from '@/components/pages/customers/students/payment/PaymentPage';
 
 const Page = () => {
     return <Payment />;

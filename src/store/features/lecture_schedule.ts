@@ -67,90 +67,90 @@ export const fetchLectureSchedules = createAsyncThunk('student/fetchSchedule', a
 // });
 
 export const slice = createSlice({
-    name: 'schedule',
-    initialState,
-    reducers: {
-        reset: () => initialState,
-        clearCurrentItem: (state: State) => {
-            state.item = initialState.item;
-        },
-        setCurrentItem: (state: State, action) => {
-            state.item = {
-                ...state.item,
-                form: action.payload
-            };
-        },
-        setCurrentItemValue: (state: State, action) => {
-            state.item = {
-                ...state.item,
-                form: {
-                    ...state.item.form,
-                    ...action.payload
-                }
-            };
-        },
-        setError: (state: State, action) => {
-            state.item = {
-                ...state.item,
-                errors: action.payload
-            };
-        },
-        clearError: (state: State) => {
-            state.item = {
-                ...state.item,
-                errors: initialState.item.errors
-            };
-        },
-        setFilter: (state: State, action) => {
-            state.items = {
-                ...state.items,
-                filter: action.payload
-            };
-        },
-        setFilterValue: (state: State, action) => {
-            state.items = {
-                ...state.items,
-                filter: {
-                    ...state.items.filter,
-                    ...action.payload
-                }
-            };
-        },
-        clearFilter: (state: State) => {
-            state.items = {
-                ...state.items,
-                filter: initialState.items.filter
-            };
-        },
-        setResult: (state: State, action) => {
-            state.items = {
-                ...state.items,
-                result: action.payload
-            };
-        }
-    },
-    extraReducers: builder => {
-        builder.addCase(fetchLectureSchedules.fulfilled, (state, action) => {
-            console.log(action.payload.data, ":::::::::::::::::::::")
-            if (action.payload.data) {
-                state.items = {
-                    ...state.items,
-                    result: {
-                        ...state.items.result,
-                        data: action.payload.data as any
-                    }
-                };
-            }
-        });
-        // builder.addCase(fetchLectureSchedule.fulfilled, (state, action) => {
-        //     if (action.payload.data.id) {
-        //         state.item = {
-        //             ...state.item,
-        //             form: action.payload.data as any
-        //         };
-        //     }
-        // });
-    }
+	name: 'schedule',
+	initialState,
+	reducers: {
+		reset: () => initialState,
+		clearCurrentItem: (state: State) => {
+				state.item = initialState.item;
+		},
+		setCurrentItem: (state: State, action) => {
+				state.item = {
+						...state.item,
+						form: action.payload
+				};
+		},
+		setCurrentItemValue: (state: State, action) => {
+				state.item = {
+						...state.item,
+						form: {
+								...state.item.form,
+								...action.payload
+						}
+				};
+		},
+		setError: (state: State, action) => {
+				state.item = {
+						...state.item,
+						errors: action.payload
+				};
+		},
+		clearError: (state: State) => {
+				state.item = {
+						...state.item,
+						errors: initialState.item.errors
+				};
+		},
+		setFilter: (state: State, action) => {
+				state.items = {
+						...state.items,
+						filter: action.payload
+				};
+		},
+		setFilterValue: (state: State, action) => {
+				state.items = {
+						...state.items,
+						filter: {
+								...state.items.filter,
+								...action.payload
+						}
+				};
+		},
+		clearFilter: (state: State) => {
+				state.items = {
+						...state.items,
+						filter: initialState.items.filter
+				};
+		},
+		setResult: (state: State, action) => {
+			state.items = {
+				...state.items,
+				result: action.payload
+			};
+		}
+	},
+	extraReducers: builder => {
+			builder.addCase(fetchLectureSchedules.fulfilled, (state, action) => {
+					console.log(action.payload.data, ":::::::::::::::::::::")
+					if (action.payload.data) {
+							state.items = {
+									...state.items,
+									result: {
+											...state.items.result,
+											data: action.payload.data as any
+									}
+							};
+					}
+			});
+			// builder.addCase(fetchLectureSchedule.fulfilled, (state, action) => {
+			//     if (action.payload.data.id) {
+			//         state.item = {
+			//             ...state.item,
+			//             form: action.payload.data as any
+			//         };
+			//     }
+			// });
+	}
 });
 
 export const {

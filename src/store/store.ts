@@ -28,6 +28,8 @@ import student from './features/student';
 import progress from './features/progress';
 import chat from './features/chat';
 import online_test from './features/online_test';
+import lesson_application from './features/lesson_application';
+
 export const store = configureStore({
     reducer: {
         shared_data,
@@ -56,6 +58,7 @@ export const store = configureStore({
         progress,
         chat,
         online_test,
+        lesson_application,
     },
     devTools: process.env.NODE_ENV !== 'production',
     middleware: getDefaultMiddleware =>

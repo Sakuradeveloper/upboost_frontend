@@ -1,59 +1,51 @@
-'use client';
+import { Elements, PaymentElement } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import { useState, useEffect } from 'react';
+import CheckoutForm from './sections/CheckoutForm';  // Path to your CheckoutForm component
+import { postRequest } from '@/utils/axios';
+import { Typography, Box } from '@mui/material';
 
-import { Box, Container, Grid, Typography, LinearProgress } from '@mui/material';
-import AuthLayout from '@/components/templates/AuthLayout';
-import PermissionLayout from '@/components/templates/PermissionLayout';
-import MainLayout from '@/components/templates/layout/MainLayout';
-import TitleBar from '@/components/atoms/TitleBar';
-import MainPannel from '@/components/atoms/MainPannel';
-// import styled from 'styled-components';
-import { styled } from '@mui/material/styles';
-import { useEffect, useMemo } from 'react';
-import { fetchProgressStudent } from '@/store/features/progress';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { useAuth } from '@/contexts/AuthContext';
-import Subscribe from './sections/Subscription';
+// Initialize Stripe
+// const stripePromise = loadStripe('pk_test_51Q8aCCBFXHZzE4HbQkdlcIc9yAg7bjgkbyoeCMgchyRuHsfLTyVJpO0yUCNh2Ewty9h5XKoHOtJuoobwevlDYuLN00Ty1eKyKD');  // Replace with your public key
+const stripePromise = loadStripe('pk_test_51Q8aCCBFXHZzE4HbQkdlcIc9yAg7bjgkbyoeCMgchyRuHsfLTyVJpO0yUCNh2Ewty9h5XKoHOtJuoobwevlDYuLN00Ty1eKyKD', {
+  locale: 'ja',  // Set locale here
+});
+const ProgressPage = () => {
+  const [clientSecret, setClientSecret] = useState('');
+  const amount = 1000;
 
-const chapters_moko = [
-  {title:'title1', progress:50, completed:true},
-  {title:'title2', progress:60, completed:false},
-  {title:'title3', progress:70, completed:false},
-  {title:'title4', progress:80, completed:true},
-]
+  useEffect(() => {
+    fetchClientSecret();
+  }, []);
 
-const ProgressContainer = styled(Box)`
-  padding: 2rem 0;
-`;
+  const fetchClientSecret=async()=>{
+    try {
+      const response = await postRequest(`v0/student/create-payment-intent/`, {
+        amount : amount,
+      });
+      console.log("response.data : ", response.data)
+      setClientSecret(response.data.clientSecret)
+    } catch (error) {
+      console.error('Error submitting test:', error);
+    }
+    // const res = await postRequest('v0/student/create-payment-intent/', {amount})
+  }
 
-export default function ProgressPage() {
-  const { user} = useAuth();
-  const dispatch = useAppDispatch();
-  const teacher = 20;
+  const options = {
+    clientSecret,
+  };
 
-  const progress = useAppSelector(state => state.progress.items.result.data);
-
-//   const data = useMemo(()=>{
-//     return {user:user?.id, teacher:teacher}
-// },[user])
-
-
-//   useEffect(()=>{
-//     if(user?.id){
-//       console.log("fetchprogressStudent")
-//       dispatch(fetchProgressStudent(user?.id))
-//     }
-//   },[data, dispatch, user?.id])
   return (
-    <AuthLayout>
-        <PermissionLayout permission={['customer']} role={['admin', 'student']}>
-            <MainLayout>
-                <TitleBar>進捗トラッキング</TitleBar>
-                <MainPannel>
-                    <Subscribe />
-                </MainPannel>
-            </MainLayout>
-        </PermissionLayout>
-    </AuthLayout>
-    
+    <Box>
+      {clientSecret ? (
+        <Elements stripe={stripePromise} options={options}>
+          <CheckoutForm />
+        </Elements>
+      ) : (
+        <Typography>支払いオプションを読み込んでいます...</Typography>
+      )}
+    </Box>
   );
-}
+};
+
+export default ProgressPage;

@@ -1,7 +1,7 @@
 // components/Subscribe.tsx
 
 import React, { useEffect, useState } from 'react';
-import { loadStripe, PaymentMethod } from '@stripe/stripe-js';
+import { loadStripe, Stripe } from '@stripe/stripe-js';
 import axios from 'axios';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
@@ -10,14 +10,17 @@ const Subscribe: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [cardElement, setCardElement] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const initializeStripe = async () => {
       const stripe = await stripePromise;
+
       if (!stripe) {
         console.error('Stripe.js failed to load.');
         return;
       }
+
       const elements = stripe.elements();
       const cardElement = elements.create('card', {
         style: {
@@ -51,12 +54,20 @@ const Subscribe: React.FC = () => {
     e.preventDefault();
     const stripe = await stripePromise;
 
-    const { paymentMethod, error } = await stripe!.createPaymentMethod({
+    if (!stripe || !cardElement) {
+      setError('Stripe.js has not loaded yet.');
+      return;
+    }
+
+    setLoading(true);
+
+    const { paymentMethod, error } = await stripe.createPaymentMethod({
       type: 'card',
       card: cardElement,
     });
 
     if (error) {
+      setLoading(false);
       setError(error.message || 'An error occurred.');
       return;
     }
@@ -68,18 +79,22 @@ const Subscribe: React.FC = () => {
       });
 
       if (res.data.error) {
+        setLoading(false);
         setError(res.data.error);
       } else if (res.data.latest_invoice.payment_intent) {
         const { client_secret } = res.data.latest_invoice.payment_intent;
-        const result = await stripe!.confirmCardPayment(client_secret);
+        const result = await stripe.confirmCardPayment(client_secret);
 
         if (result.error) {
+          setLoading(false);
           setError(result.error.message || 'An error occurred during confirmation.');
         } else {
+          setLoading(false);
           alert('Subscription successful!');
         }
       }
     } catch (err) {
+      setLoading(false);
       setError('An error occurred while processing the subscription.');
     }
   };
@@ -95,7 +110,9 @@ const Subscribe: React.FC = () => {
       />
       <div id="card-element"></div>
       {error && <div style={{ color: 'red' }}>{error}</div>}
-      <button type="submit">Subscribe</button>
+      <button type="submit" disabled={loading}>
+        {loading ? 'Processing...' : 'Subscribe'}
+      </button>
     </form>
   );
 };

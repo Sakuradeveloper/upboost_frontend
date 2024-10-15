@@ -18,7 +18,7 @@ const UserListPage = () => {
 
     useEffect(() => {
         dispatch(fetchUsers(filter));
-    }, [filter]);
+    }, [filter, dispatch]);
 
     return (
         <AuthLayout>

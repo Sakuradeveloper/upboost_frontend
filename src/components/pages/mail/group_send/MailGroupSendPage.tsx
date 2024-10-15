@@ -25,7 +25,7 @@ const MailGroupSendPage = () => {
                 pageSize: 99999
             })
         );
-    }, []);
+    }, [dispatch]);
 
     return (
         <AuthLayout>

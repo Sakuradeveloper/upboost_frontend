@@ -15,7 +15,7 @@ const UserForm = () => {
 
     useEffect(() => {
         dispatch(fetchRoleData());
-    }, []);
+    }, [dispatch]);
 
     return (
         <>

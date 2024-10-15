@@ -35,7 +35,7 @@ const OnlineTestCreatePage = () => {
             chapter: chapterId,
         }
         dispatch(fetchProblem(userChapter))
-    }, []);
+    }, [dispatch, searchParams, user]);
     
     return (
         <AuthLayout>

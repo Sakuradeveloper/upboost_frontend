@@ -27,7 +27,7 @@ const MailSendForm = ({}: Props) => {
         return () => {
             dispatch(clearCurrentItem());
         };
-    }, []);
+    }, [dispatch]);
 
     const handleClose = () => {
         if (pending) return;

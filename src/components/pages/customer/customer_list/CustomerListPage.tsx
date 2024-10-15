@@ -39,7 +39,7 @@ const CustomerListPage = () => {
     useEffect(() => {
         dispatch(fetchStatusData());
         dispatch(fetchPropertyData());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         let temp_filter = {
@@ -54,15 +54,15 @@ const CustomerListPage = () => {
 
         dispatch(setFilterValue(temp_filter));
         dispatch(fetchCustomers(temp_filter));
-    }, [params]);
+    }, [params, dispatch]);
 
     useEffect(() => {
         router.push(`/customers?${search_parmam_url}`);
-    }, [search_parmam_url]);
+    }, [search_parmam_url, router]);
 
     return (
         <AuthLayout>
-            <PermissionLayout permission={['customer']} role={['admin', 'member']}>
+            <PermissionLayout permission={['customer']} role={['admin', 'student']}>
                 <MainLayout>
                     <TitleBar>顧客一覧</TitleBar>
 

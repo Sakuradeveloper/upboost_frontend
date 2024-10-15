@@ -10,7 +10,7 @@ import MainLayout from '@/components/templates/layout/MainLayout';
 import TitleBar from '@/components/atoms/TitleBar';
 import MainPannel from '@/components/atoms/MainPannel';
 import ChapterList from './sections/ChapterList';
-import { fetchCaptures } from '@/store/features/subject';
+import { fetchSubjects } from '@/store/features/subject';
 
 const ChapterListPage = () => {
     const dispatch = useAppDispatch();
@@ -19,7 +19,7 @@ const ChapterListPage = () => {
 
     useEffect(() => {
         dispatch(clearCurrentItem());
-        dispatch(fetchCaptures());
+        dispatch(fetchSubjects());
     }, [dispatch]);
 
     

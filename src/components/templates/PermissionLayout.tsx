@@ -33,7 +33,7 @@ const PermissionLayout = ({ children, permission, role }: Props) => {
                 router.push(`/accounts/sign_in?redirect_to=${pathname}`);
             }
         }
-    }, [user]);
+    }, [user, pathname, role, router]);
 
     if (user) {
         return children;

@@ -69,7 +69,7 @@ const CustomerTable = ({ search_url }: Props) => {
                                     onClick={sort => dispatch(setFilterValue({ order_by: sort }))}
                                 />
                             </TableCell>
-                            {user?.user_info.role.role_id == 'admin' && (
+                            {user?.role.role_id == 'admin' && (
                                 <TableCell style={{ minWidth: 100 }}>
                                     <SorterItem
                                         label='担当者'
@@ -173,7 +173,7 @@ const CustomerTable = ({ search_url }: Props) => {
                                     <TableCell sx={{ whiteSpace: 'nowrap' }}>{customer?.name}</TableCell>
                                     <TableCell>{customer.phone}</TableCell>
                                     <TableCell>{customer.email}</TableCell>
-                                    {user?.user_info.role.role_id == 'admin' && (
+                                    {user?.role.role_id == 'admin' && (
                                         <TableCell sx={{ whiteSpace: 'nowrap' }}>
                                             <Button
                                                 color='secondary'
@@ -215,7 +215,7 @@ const CustomerTable = ({ search_url }: Props) => {
 
                         {result.data.length === 0 && (
                             <TableRow className='h-[100px]'>
-                                <TableCell colSpan={user?.user_info.role.role_id == 'admin' ? 15 : 14} align='center'>
+                                <TableCell colSpan={user?.role.role_id == 'admin' ? 15 : 14} align='center'>
                                     <div className='w-full flex flex-col items-center justify-center gap-3'>
                                         <FolderOpenIcon sx={{ fontSize: 100 }} className='text-[#697586]' />
 

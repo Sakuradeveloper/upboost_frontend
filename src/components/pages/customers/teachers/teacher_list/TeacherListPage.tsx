@@ -22,7 +22,7 @@ const CustomerListPage = () => {
 
     useEffect(() => {
         dispatch(fetchUsers(filter));
-    }, [filter]);
+    }, [filter, dispatch]);
 
     return (
         <AuthLayout>
@@ -30,6 +30,7 @@ const CustomerListPage = () => {
                 <MainLayout>
                     <TitleBar>顧客一覧</TitleBar>
                     <MainPannel>
+                        {/* <>teacherList</> */}
                         <TeacherList/>
                         {/* <Filter />
                         <CustomerTable search_url={search_parmam_url} />

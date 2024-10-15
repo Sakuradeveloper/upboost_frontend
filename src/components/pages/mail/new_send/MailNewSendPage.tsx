@@ -29,11 +29,11 @@ const MailNewSendPage = () => {
                 pageSize: 99999
             })
         );
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         dispatch(fetchCustomers(filter));
-    }, [filter]);
+    }, [filter, dispatch]);
 
     return (
         <AuthLayout>

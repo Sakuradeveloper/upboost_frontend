@@ -4,6 +4,7 @@ import { IMail } from '@/interfaces';
 import { Avatar } from '@mui/material';
 import { deepOrange, deepPurple } from '@mui/material/colors';
 import moment from 'moment';
+import Image from 'next/image';
 
 interface Props {
     item: IMail;
@@ -63,7 +64,7 @@ const MailItem = ({ item, className }: Props) => {
                                     target='__blank'
                                     download={`${attachment.info?.name}`}
                                 >
-                                    <img
+                                    <Image
                                         src={`${BACKEND_URL}${attachment.document}`}
                                         alt='W3Schools'
                                         width='150'

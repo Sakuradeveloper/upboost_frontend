@@ -93,7 +93,7 @@ const ImportCSVDialog = ({ open, onClose, items }: Props) => {
                             <TableCell style={{ minWidth: 100, whiteSpace: 'nowrap' }}>名前</TableCell>
                             <TableCell style={{ minWidth: 100, whiteSpace: 'nowrap' }}>電話番号</TableCell>
                             <TableCell style={{ minWidth: 100, whiteSpace: 'nowrap' }}>メールアドレス</TableCell>
-                            {user?.user_info.role.role_id == 'admin' && (
+                            {user?.role.role_id == 'admin' && (
                                 <TableCell style={{ minWidth: 100, whiteSpace: 'nowrap' }}>担当者</TableCell>
                             )}
                             <TableCell style={{ minWidth: 100, whiteSpace: 'nowrap' }}>入金日</TableCell>
@@ -111,9 +111,9 @@ const ImportCSVDialog = ({ open, onClose, items }: Props) => {
                                 <TableCell className=' whitespace-nowrap'>{row.name}</TableCell>
                                 <TableCell>{row.phone}</TableCell>
                                 <TableCell>{row.email}</TableCell>
-                                {user?.user_info.role.role_id == 'admin' && (
+                                {user?.role.role_id == 'admin' && (
                                     <TableCell style={{ minWidth: 100, whiteSpace: 'nowrap' }}>
-                                        {row.manager || '' == '' ? user.user_info.name : row.manager}
+                                        {/* {row.manager || '' == '' ? user.user_info.name : row.manager} */}aaa
                                     </TableCell>
                                 )}
                                 <TableCell>
@@ -189,7 +189,7 @@ const ImportCSVDialog = ({ open, onClose, items }: Props) => {
                             <TableCell style={{ minWidth: 100, whiteSpace: 'nowrap' }}>名前</TableCell>
                             <TableCell style={{ minWidth: 100, whiteSpace: 'nowrap' }}>電話番号</TableCell>
                             <TableCell style={{ minWidth: 100, whiteSpace: 'nowrap' }}>メールアドレス</TableCell>
-                            {user?.user_info.role.role_id == 'admin' && (
+                            {user?.role.role_id == 'admin' && (
                                 <TableCell style={{ minWidth: 100, whiteSpace: 'nowrap' }}>担当者</TableCell>
                             )}
                             <TableCell style={{ minWidth: 100, whiteSpace: 'nowrap' }}>入金日</TableCell>
@@ -216,7 +216,7 @@ const ImportCSVDialog = ({ open, onClose, items }: Props) => {
                                     <TableCell>{row.data.name}</TableCell>
                                     <TableCell>{row.data.phone}</TableCell>
                                     <TableCell>{row.data.email}</TableCell>
-                                    {user?.user_info.role.role_id == 'admin' && (
+                                    {user?.role.role_id == 'admin' && (
                                         <TableCell style={{ minWidth: 100, whiteSpace: 'nowrap' }}>
                                             {row.data.manager?.name}
                                         </TableCell>

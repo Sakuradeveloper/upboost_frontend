@@ -33,7 +33,7 @@ const SignUpPage = () => {
 
     useEffect(() => {
         dispatch(fetchRoleData());
-    }, []);
+    }, [dispatch]);
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();

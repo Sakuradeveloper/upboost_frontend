@@ -137,7 +137,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
             dispatch(clearMessages());
         }
-    }, [messages]);
+    }, [messages, dispatch]);
 
     const login = async (credential: any, callback: (user: IUser | null) => void) => {
         setPending(true);

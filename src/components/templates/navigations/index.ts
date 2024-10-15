@@ -36,7 +36,7 @@ const useMenuItems = () => {
         return{
             items:[teacher]
         }
-    } else if(user?.role.role_id === 'student'){
+    } else {
         return {
             items:[student]
         }

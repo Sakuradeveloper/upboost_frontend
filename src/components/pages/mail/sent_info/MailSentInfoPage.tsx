@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useParams } from 'next/navigation';
 import { IMail } from '@/interfaces';
 import { postRequest } from '@/utils/axios';
@@ -31,17 +31,19 @@ const MailSentInfoPage = () => {
         return () => {
             dispatch(reset());
         };
-    }, []);
+    }, [dispatch]);
+
+    const fetchData = useCallback(() => {
+        dispatch(fetchSentMail(parseInt(`${id}`)));
+    }, [dispatch, id]);
 
     useEffect(() => {
         if (id) {
             fetchData();
         }
-    }, [id]);
+    }, [id, fetchData]);
 
-    const fetchData = () => {
-        dispatch(fetchSentMail(parseInt(`${id}`)));
-    };
+    
 
     const handleMakeAsReadClick = async (item: IMail) => {
         if (item.read) {

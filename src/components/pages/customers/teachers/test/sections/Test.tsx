@@ -7,6 +7,7 @@ import { useAppSelector } from '@/store/hooks';
 import QuestionBuilder from '../components/Question';
 import { postFormdata, postRequest } from '@/utils/axios';
 import { useAuth } from '@/contexts/AuthContext';
+import Image from 'next/image';
 
 export default function Home() {
   
@@ -180,7 +181,7 @@ export default function Home() {
 
                             {problem.dropbox_image_url && (
                               <Box mt={2} mb={2} sx={{width: '200px', margin: 'auto'}}>
-                                <img src={problem.dropbox_image_url} alt={`Question ${index + 1}`} style={{ width: '100%' }} />
+                                <Image src={problem.dropbox_image_url} alt={`Question ${index + 1}`} style={{ width: '100%' }} />
                               </Box>
                             )}
 
@@ -280,7 +281,7 @@ export default function Home() {
 
                           {problem.dropbox_image_url && (
                             <Box mt={2} mb={2} sx={{width: '200px', margin: 'auto'}}>
-                              <img src={problem.dropbox_image_url} alt={`Question ${index + 1}`} style={{ width: '100%' }} />
+                              <Image src={problem.dropbox_image_url} alt={`Question ${index + 1}`} style={{ width: '100%' }} />
                             </Box>
                           )}
 

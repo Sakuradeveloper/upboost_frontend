@@ -16,7 +16,7 @@ const Filter = () => {
         return () => {
             dispatch(clearFilter());
         };
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className='flex flex-col md:flex-row md:items-center gap-4  mb-[16px]'>

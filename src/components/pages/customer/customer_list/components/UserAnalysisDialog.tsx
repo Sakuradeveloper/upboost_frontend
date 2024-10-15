@@ -18,15 +18,21 @@ const UserAnalysisDialog = ({ userId, onClose }: Props) => {
     const currentItem = useAppSelector(state => state.user_analysis.item.form);
 
     useEffect(() => {
+        const fetchData = async () => {
+            const res = await getRequest(`v0/analysis/${userId}`);
+            if (res.status == 200) {
+                dispatch(setCurrentItem(res.data));
+            }
+        };
         if (userId != null) fetchData();
-    }, [userId]);
+    }, [userId, dispatch]);
 
-    const fetchData = async () => {
-        const res = await getRequest(`v0/analysis/${userId}`);
-        if (res.status == 200) {
-            dispatch(setCurrentItem(res.data));
-        }
-    };
+    // const fetchData = async () => {
+    //     const res = await getRequest(`v0/analysis/${userId}`);
+    //     if (res.status == 200) {
+    //         dispatch(setCurrentItem(res.data));
+    //     }
+    // };
 
     const handleRowClick = (id: number) => {
         dispatch(setFilterValue({ manager: userId, status: id, keyword: '', page: 1, property: 0, enable: true }));

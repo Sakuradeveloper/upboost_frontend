@@ -28,10 +28,10 @@ const UserTable = () => {
                         return (
                             <TableRow hover role='checkbox' tabIndex={-1} key={user.id}>
                                 <TableCell>{user.id}</TableCell>
-                                <TableCell>{user.user_info.name}</TableCell>
+                                {/* <TableCell>{user.user_info.name}</TableCell>
                                 <TableCell>{user.email}</TableCell>
                                 <TableCell>{user.user_info.phone}</TableCell>
-                                <TableCell>{user.user_info.role.name}</TableCell>
+                                <TableCell>{user.user_info.role.name}</TableCell> */}
                                 <TableCell>{user.is_active ? '通常' : '停止中'}</TableCell>
                                 <TableCell>{moment(user?.created_at).format('YYYY/MM/DD  HH:mm')}</TableCell>
                                 <TableCell>

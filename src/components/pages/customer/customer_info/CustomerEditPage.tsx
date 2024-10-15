@@ -32,7 +32,7 @@ const CustomerEditPage = () => {
         return () => {
             dispatch(clearCurrentItem());
         };
-    }, []);
+    }, [dispatch, id, params]);
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -57,7 +57,7 @@ const CustomerEditPage = () => {
 
     return (
         <AuthLayout>
-            <PermissionLayout permission={['customer']} role={['admin', 'member']}>
+            <PermissionLayout permission={['customer']} role={['admin', 'teacher']}>
                 <MainLayout>
                     <TitleBar href='/customers'>顧客情報</TitleBar>
 

@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import { Container, Typography, Box, Button, Radio, RadioGroup, FormControlLabel, IconButton } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { useAuth } from '@/contexts/AuthContext';
-import AudioPlayer from 'material-ui-audio-player';
 
 import { AiFillStop, AiFillPlayCircle, AiFillPauseCircle, AiFillHome } from 'react-icons/ai';
 import { postRequest } from '@/utils/axios';

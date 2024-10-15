@@ -19,7 +19,7 @@ const MailTemplateListPage = () => {
 
     useEffect(() => {
         dispatch(fetchMailTemplates(filter));
-    }, [filter]);
+    }, [filter, dispatch]);
 
     return (
         <AuthLayout>

@@ -27,23 +27,22 @@ const Payment: React.FC<PaymentProps> = ({ handleTab }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    const fetchClientSecret = async () => {
+      setLoading(true);
+      try {
+        const response = await postRequest(`v0/student/create-subscription/`, {
+          duration, // Send the selected duration to the backend
+          user_email: user?.email,
+        });
+        console.log("response.data : ", response.data);
+        setClientSecret(response.data.clientSecret);
+      } catch (error) {
+        console.error('Error submitting test:', error);
+      }
+      setLoading(false);
+    };
     fetchClientSecret();
   }, [duration, user, dispatch]);
-
-  const fetchClientSecret = async () => {
-    setLoading(true);
-    try {
-      const response = await postRequest(`v0/student/create-subscription/`, {
-        duration, // Send the selected duration to the backend
-        user_email: user?.email,
-      });
-      console.log("response.data : ", response.data);
-      setClientSecret(response.data.clientSecret);
-    } catch (error) {
-      console.error('Error submitting test:', error);
-    }
-    setLoading(false);
-  };
 
   const options = {
     clientSecret,

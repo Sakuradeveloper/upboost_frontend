@@ -14,7 +14,7 @@ const MailInboxDomainsPage = () => {
 
     useEffect(() => {
         dispatch(fetchDomainData());
-    }, []);
+    }, [dispatch]);
 
     return (
         <AuthLayout>

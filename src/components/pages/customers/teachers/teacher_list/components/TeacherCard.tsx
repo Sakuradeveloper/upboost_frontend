@@ -10,7 +10,7 @@ import { Button, Card, CardContent, CardMedia, Link, Table, TableBody, TableCell
 import {IUser} from '@/interfaces/index';
 
 interface TeacherCardProps {
-    teacher: IUser;
+    teacher: any;
   }
 
 const TeacherCard: React.FC<TeacherCardProps> = ({ teacher }) => {

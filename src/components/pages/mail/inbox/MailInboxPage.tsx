@@ -22,15 +22,15 @@ const MailInboxPage = () => {
         return () => {
             dispatch(reset());
         };
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         dispatch(setFilterValue({ domain: domain.toString().replace(/%40/g, '@') }));
-    }, [domain]);
+    }, [domain, dispatch]);
 
     useEffect(() => {
         dispatch(fetchInboxMails(filter));
-    }, [filter]);
+    }, [filter, dispatch]);
 
     return (
         <AuthLayout>

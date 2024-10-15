@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { IMail } from '@/interfaces';
@@ -35,17 +35,19 @@ const MailInboxPage = () => {
         return () => {
             dispatch(reset());
         };
-    }, []);
+    }, [dispatch]);
+
+    const fetchData = useCallback(() => {
+        dispatch(fetchMails({ domain: domain.toString().replace(/%40/g, '@'), id: parseInt(`${id}`) }));
+    },[dispatch, domain, id]);
 
     useEffect(() => {
         if (id) {
             fetchData();
         }
-    }, [id]);
+    }, [id, fetchData]);
 
-    const fetchData = () => {
-        dispatch(fetchMails({ domain: domain.toString().replace(/%40/g, '@'), id: parseInt(`${id}`) }));
-    };
+    
 
     const handleReplyClick = () => {
         dispatch(

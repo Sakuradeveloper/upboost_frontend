@@ -22,15 +22,15 @@ const MailSentPage = () => {
         return () => {
             dispatch(reset());
         };
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         dispatch(setFilterValue({ domain: domain.toString().replace(/%40/g, '@') }));
-    }, [domain]);
+    }, [domain, dispatch]);
 
     useEffect(() => {
         dispatch(fetchSentMails(filter));
-    }, [filter]);
+    }, [filter, dispatch]);
 
     return (
         <AuthLayout>

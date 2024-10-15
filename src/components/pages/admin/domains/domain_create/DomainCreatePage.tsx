@@ -18,7 +18,7 @@ const DomainCreatePage = () => {
 
     useEffect(() => {
         dispatch(clearCurrentItem());
-    }, []);
+    }, [dispatch]);
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();

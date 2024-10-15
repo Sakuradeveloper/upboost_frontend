@@ -29,7 +29,7 @@ const MailSendForm = ({ onReload }: Props) => {
         return () => {
             dispatch(clearCurrentItem());
         };
-    }, []);
+    }, [dispatch]);
 
     const handleClose = () => {
         if (pending) return;

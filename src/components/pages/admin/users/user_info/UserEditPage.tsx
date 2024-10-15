@@ -26,7 +26,7 @@ const UserEditPage = () => {
     useEffect(() => {
         dispatch(clearCurrentItem());
         dispatch(fetchUser(parseInt(`${id}`)));
-    }, [id]);
+    }, [id, dispatch]);
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();

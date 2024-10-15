@@ -14,7 +14,7 @@ const MailSentDomainsPage = () => {
 
     useEffect(() => {
         dispatch(fetchDomainData());
-    }, []);
+    }, [dispatch]);
 
     return (
         <AuthLayout>

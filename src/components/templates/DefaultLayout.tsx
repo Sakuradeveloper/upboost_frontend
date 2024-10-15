@@ -30,7 +30,7 @@ const ComponentWrapper = ({ children }: { children: React.ReactNode }) => {
 
     useEffect(() => {
         dispatch(reset());
-    }, [pathname, params]);
+    }, [pathname, params, dispatch]);
 
     return (
         <ThemeProvider theme={theme(customization)}>

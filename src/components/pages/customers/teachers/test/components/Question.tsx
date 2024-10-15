@@ -6,6 +6,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppDispatch } from '@/store/hooks';
 import { useAuth } from '@/contexts/AuthContext';
+import Image from 'next/image';
 
 const QuestionBuilder = ({ addQuestion }: { addQuestion: any }) => {
   const { refresh } = useAuth();
@@ -139,7 +140,7 @@ const QuestionBuilder = ({ addQuestion }: { addQuestion: any }) => {
           />
           {image && (
             <Box mt={2}>
-              <img src={URL.createObjectURL(image)} alt="Uploaded Image" style={{ maxWidth: '100%' }} />
+              <Image src={URL.createObjectURL(image)} alt="Uploaded Image" style={{ maxWidth: '100%' }} />
             </Box>
           )}
         </Grid>

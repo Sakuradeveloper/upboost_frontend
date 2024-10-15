@@ -130,7 +130,7 @@ const ChatRoom = ({selectedUser, roomName}:Props) => {
         socketRef.current.close();
       }
     };
-  }, [roomName]);
+  }, [roomName, dispatch]);
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();

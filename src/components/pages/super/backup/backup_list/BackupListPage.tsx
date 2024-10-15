@@ -21,11 +21,11 @@ const CustomerListPage = () => {
         return () => {
             dispatch(reset());
         };
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         dispatch(fetchBackupList(filter));
-    }, [filter]);
+    }, [filter, dispatch]);
 
     return (
         <AuthLayout>

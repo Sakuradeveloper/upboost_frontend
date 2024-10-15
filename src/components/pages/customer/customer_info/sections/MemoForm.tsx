@@ -28,7 +28,7 @@ const MemoForm = () => {
     useEffect(() => {
         console.log(id);
         dispatch(fetchMemoByCustomerId(parseInt(`${id}`)));
-    }, []);
+    }, [dispatch, id]);
 
     const handleCreate = () => {
         dispatch(clearCurrentItem());

@@ -16,7 +16,7 @@ const CustomerForm = () => {
     useEffect(() => {
         dispatch(fetchStatusData());
         dispatch(fetchPropertyData());
-    }, []);
+    }, [dispatch]);
 
     return (
         <>

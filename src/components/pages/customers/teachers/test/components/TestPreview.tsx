@@ -5,6 +5,7 @@ import { useState, useRef } from 'react';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import StopIcon from '@mui/icons-material/Stop';
+import Image from 'next/image';
 
 const TestPreview = ({ questions, deleteQuestion }: { questions: any[], deleteQuestion: (index: number) => void }) => {
   const [playCounts, setPlayCounts] = useState<number[]>(questions.map(q => q.playCount || 1)); // Initialize based on the playCount set by teacher
@@ -40,7 +41,7 @@ const TestPreview = ({ questions, deleteQuestion }: { questions: any[], deleteQu
           <Typography variant="h6">{question.question}</Typography>
 
           {/* Display image if available */}
-          {question.image && <img src={question.image} alt="question image" width="100%" />}
+          {question.image && <Image src={question.image} alt="question image" className="w-full" />}
 
           {/* Display audio player with play count restriction */}
           {question.audio && (

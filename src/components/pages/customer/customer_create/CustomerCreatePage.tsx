@@ -18,7 +18,7 @@ const CustomerCreatePage = () => {
 
     useEffect(() => {
         dispatch(clearCurrentItem());
-    }, []);
+    }, [dispatch]);
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -35,7 +35,7 @@ const CustomerCreatePage = () => {
 
     return (
         <AuthLayout>
-            <PermissionLayout permission={['customer']} role={['admin', 'member']}>
+            <PermissionLayout permission={['customer']} role={['admin', 'teacher']}>
                 <MainLayout>
                     <TitleBar href='/customers'>顧客新規登録</TitleBar>
 

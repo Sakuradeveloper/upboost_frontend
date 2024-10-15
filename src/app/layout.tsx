@@ -7,6 +7,7 @@ import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import DefaultLayout from '@/components/templates/DefaultLayout';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
     title: 'MORE UP BOOST',
@@ -21,8 +22,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <meta name='keywords' content='' />
                 </Suspense>
 
-                <link href='https://fonts.googleapis.com/earlyaccess/notosansjapanese.css' rel='stylesheet' />
-                <link href='https://fonts.googleapis.com/css?family=Kosugi' rel='stylesheet' />
+                <Link href='https://fonts.googleapis.com/earlyaccess/notosansjapanese.css' rel='stylesheet' />
+                <Link href='https://fonts.googleapis.com/css?family=Kosugi' rel='stylesheet' />
             </head>
             <DefaultLayout>
                 {children}

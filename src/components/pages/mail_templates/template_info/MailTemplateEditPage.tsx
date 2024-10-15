@@ -26,7 +26,7 @@ const MailTemplateEditPage = () => {
     useEffect(() => {
         dispatch(clearCurrentItem());
         dispatch(fetchMailTemplate(parseInt(`${id}`)));
-    }, [id]);
+    }, [id, dispatch]);
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();

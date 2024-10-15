@@ -19,7 +19,7 @@ const DomainListPage = () => {
 
     useEffect(() => {
         dispatch(fetchDomains(filter));
-    }, [filter]);
+    }, [filter, dispatch]);
 
     return (
         <AuthLayout>

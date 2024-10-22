@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from "next/image";
 
 const Loading = () => {
@@ -7,6 +8,8 @@ const Loading = () => {
                 <Image
                     src='/images/logo/logo_lg.png'
                     alt='Logo'
+                    width={400}
+                    height={10}
                     className='block animate-bounce mx-auto h-[70px] sm:h-[100px] mb-[50px]'
                 />
             </div>

@@ -9,7 +9,7 @@ const LogoSection = () => {
 
     return (
         <ButtonBase disableRipple component={'a'} href={config.defaultPath}>
-            <Image src="/images/logo/logo.png" className='w-[32px]' alt="logo" />
+            <Image src="/images/logo/logo.png" width={32} height={32} alt="logo" />
         </ButtonBase>
     );
 };

@@ -8,6 +8,7 @@ import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import DefaultLayout from '@/components/templates/DefaultLayout';
 import Link from 'next/link';
+import { Noto_Sans_JP } from 'next/font/google'
 
 export const metadata: Metadata = {
     title: 'MORE UP BOOST',
@@ -23,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </Suspense>
 
                 <Link href='https://fonts.googleapis.com/earlyaccess/notosansjapanese.css' rel='stylesheet' />
-                <Link href='https://fonts.googleapis.com/css?family=Kosugi' rel='stylesheet' />
+                <link href='https://fonts.googleapis.com/css?family=Kosugi' rel='stylesheet' />
             </head>
             <DefaultLayout>
                 {children}

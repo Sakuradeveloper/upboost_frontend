@@ -36,6 +36,10 @@ const useMenuItems = () => {
         return{
             items:[teacher]
         }
+    } else if(user?.role.role_id === 'student'){
+        return {
+            items:[student]
+        }
     } else {
         return {
             items:[student]

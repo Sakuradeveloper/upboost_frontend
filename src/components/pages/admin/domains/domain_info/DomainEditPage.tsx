@@ -26,7 +26,7 @@ const DomainEditPage = () => {
     useEffect(() => {
         dispatch(clearCurrentItem());
         dispatch(fetchDomain(parseInt(`${id}`)));
-    }, [id, dispatch]);
+    }, [id]);
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();

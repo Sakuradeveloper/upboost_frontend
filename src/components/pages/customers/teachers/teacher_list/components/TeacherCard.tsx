@@ -7,14 +7,14 @@ import moment from 'moment';
 
 import { Button, Card, CardContent, CardMedia, Link, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 
-import {IUser} from '@/interfaces/index';
+import {Teacher} from '@/interfaces/index';
 
 interface TeacherCardProps {
-    teacher: any;
+    teacher: Teacher;
   }
 
 const TeacherCard: React.FC<TeacherCardProps> = ({ teacher }) => {
-    const { name, phone } = teacher.user_info;
+    // const { name, phone } = teacher.name;
 
     const { user } = useAuth();
     const router = useRouter();
@@ -26,13 +26,13 @@ const TeacherCard: React.FC<TeacherCardProps> = ({ teacher }) => {
 
     return (
         <Card sx={{ maxWidth: 345, margin: 2 }}>
-            <CardMedia component="img" height="140" image="{}" alt={name} />
+            <CardMedia component="img" height="140" image="{}" alt={teacher.name} />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                {name}
+                {teacher.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                Phone: {phone}
+                Phone: {teacher.phone}
                 </Typography>
                 {/* <Typography variant="body2" color="text.secondary">
                 Hobbies: {hobbies}

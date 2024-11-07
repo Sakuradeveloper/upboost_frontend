@@ -36,20 +36,16 @@ const ProgressPage = () => {
     }, [dispatch, arg]);
     
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['customer']} role={['admin', 'teacher']}>
-                <MainLayout>
-                    <TitleBar>レッスンの進捗状況</TitleBar>
-                    <MainPannel>
-                        <ProgressTable teacherId={teacher} studentId={student} />
-                        {/* <Filter />
-                        <CustomerTable search_url={search_parmam_url} />
-                        <TablePagination /> */}
+        <>
+            <TitleBar>レッスンの進捗状況</TitleBar>
+            <MainPannel>
+                <ProgressTable teacherId={teacher} studentId={student} />
+                {/* <Filter />
+                <CustomerTable search_url={search_parmam_url} />
+                <TablePagination /> */}
 
-                    </MainPannel>
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+            </MainPannel>
+        </>
     );
 };
 

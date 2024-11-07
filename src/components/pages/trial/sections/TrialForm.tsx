@@ -8,7 +8,6 @@ import { useAppDispatch } from '@/store/hooks';
 import { useRouter } from 'next/navigation';
 import { publicApiInstance } from '@/utils/axios';
 import { appendMessage } from '@/store/features/utils';
-import Image from 'next/image';
 
 const theme = createTheme({
   components: {
@@ -675,7 +674,7 @@ const Form: React.FC = () => {
 
         <Button type="submit" variant="contained" color="primary" sx={{ padding:1, fontSize:"1.25rem", backgroundColor:'#F29C2E', '&:hover':{ backgroundColor:'#D87A1E' } }}>Submit</Button>
         <div className='absolute top-[-2rem] right-12'>
-          <Image src="/images/students/trial/img-form.png" alt="birds" />
+          <img src="/images/students/trial/img-form.png" alt="birds" />
         </div>
       </Box>
     </ThemeProvider>

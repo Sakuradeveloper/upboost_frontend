@@ -19,7 +19,7 @@ export interface IUser {
         name:'string';
     };
     // permission: 'owner' | 'customer' | 'super';
-    is_active: boolean;
+    is_active?: boolean;
     is_allowed: boolean;
     avatar_url?: string;
     created_at?: string;

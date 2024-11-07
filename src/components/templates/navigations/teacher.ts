@@ -1,4 +1,4 @@
-import { AiFillSchedule, AiOutlineHome, AiOutlineUser, AiFillWechat } from 'react-icons/ai';
+import { AiFillSchedule, AiOutlineHome, AiOutlineUser, AiFillWechat, AiFillRedEnvelope } from 'react-icons/ai';
 import { RiCustomerService2Line, RiMessage2Fill, RiSecurePaymentFill } from 'react-icons/ri';
 import { IoMailUnreadOutline } from 'react-icons/io5';
 import { VscNotebookTemplate } from 'react-icons/vsc';
@@ -13,13 +13,15 @@ const icons = {
     AiOutlineUser,
     RiSecurePaymentFill,
     RiMessage2Fill,
-    AiFillWechat
+    AiFillWechat, 
+    AiFillRedEnvelope,
 };
 
 // ==============================|| EXTRA PAGES MENU ITEMS ||============================== //
 
 const pages = {
     id: 'teacher',
+    title: '教師',
     type: 'group',
     children: [
         {
@@ -62,6 +64,14 @@ const pages = {
         //     icon: icons.RiSecurePaymentFill,
         //     breadcrumbs: false
         // },
+        {
+            id: 'application',
+            title: 'お知らせ',
+            type: 'item',
+            url: '/teachers/applications/trial',
+            icon: icons.AiFillRedEnvelope,
+            breadcrumbs: false
+        },
         {
             id: 'notification',
             title: 'お知らせ',

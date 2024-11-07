@@ -26,17 +26,13 @@ const LecturePage = () => {
 
     console.log(chapter, "========>>>>>>>>>>>", subject)
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['customer']} role={['admin']}>
-                <MainLayout>
-                    <TitleBar href='/admin/subjects'>教科書管理</TitleBar>
-                    <MainPannel>
-                        {/* <SubjectList /> */}
-                        {subject ? <ChapterList id = {subject}/> : chapter ? <SubjectList/> : <SubjectList/>}
-                    </MainPannel>
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+        <>
+            <TitleBar href='/admin/subjects'>教科書管理</TitleBar>
+            <MainPannel>
+                {/* <SubjectList /> */}
+                {subject ? <ChapterList id = {subject}/> : chapter ? <SubjectList/> : <SubjectList/>}
+            </MainPannel>
+        </>
     );
 };
 

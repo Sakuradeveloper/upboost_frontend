@@ -18,22 +18,18 @@ const UserListPage = () => {
 
     useEffect(() => {
         dispatch(fetchUsers(filter));
-    }, [filter, dispatch]);
+    }, [filter]);
 
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['owner', 'super']} role={['admin']}>
-                <MainLayout>
-                    <TitleBar>担当一覧</TitleBar>
+        <>
+            <TitleBar>担当一覧</TitleBar>
 
-                    <MainPannel>
-                        <Filter />
-                        <UserTable />
-                        <TablePagination />
-                    </MainPannel>
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+            <MainPannel>
+                <Filter />
+                <UserTable />
+                <TablePagination />
+            </MainPannel>
+        </>
     );
 };
 

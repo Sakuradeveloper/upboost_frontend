@@ -45,37 +45,32 @@ export default function ProgressPage() {
     }
   },[data, dispatch, user?.id])
   return (
-    <AuthLayout>
-        <PermissionLayout permission={['customer']} role={['admin', 'student']}>
-            <MainLayout>
-                <TitleBar>進捗トラッキング</TitleBar>
-                <MainPannel>
-                    <Container>
-                        <Typography variant="h4" gutterBottom>
-                          学習の進捗状況
-                        </Typography>
-                        <ProgressContainer>
-                            <LinearProgress variant="determinate" value={70} />
-                            <Typography variant="body1" align="center">
-                              70% 完了
-                            </Typography>
-                        </ProgressContainer>
-                        {/* <Grid container spacing={4}>
-                            <Grid item xs={12} sm={6} md={4}>
-                            <CourseTile courseName="Course 1" progress={80} nextChapter="Chapter 5" />
-                            </Grid>
-                            <Grid item xs={12} sm={6} md={4}>
-                            <CourseTile courseName="Course 2" progress={50} nextChapter="Chapter 3" />
-                            </Grid>
-                        </Grid> */}
-                        <Grid>
-                            <ChapterList chapters={progress}/>
-                        </Grid>
-                    </Container>
-                </MainPannel>
-            </MainLayout>
-        </PermissionLayout>
-    </AuthLayout>
-    
+    <>
+      <TitleBar>進捗トラッキング</TitleBar>
+      <MainPannel>
+          <Container>
+              <Typography variant="h4" gutterBottom>
+                学習の進捗状況
+              </Typography>
+              <ProgressContainer>
+                  <LinearProgress variant="determinate" value={70} />
+                  <Typography variant="body1" align="center">
+                    70% 完了
+                  </Typography>
+              </ProgressContainer>
+              {/* <Grid container spacing={4}>
+                  <Grid item xs={12} sm={6} md={4}>
+                  <CourseTile courseName="Course 1" progress={80} nextChapter="Chapter 5" />
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={4}>
+                  <CourseTile courseName="Course 2" progress={50} nextChapter="Chapter 3" />
+                  </Grid>
+              </Grid> */}
+              <Grid>
+                  <ChapterList chapters={progress}/>
+              </Grid>
+          </Container>
+      </MainPannel>
+    </>
   );
 }

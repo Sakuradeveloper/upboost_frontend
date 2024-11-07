@@ -9,7 +9,7 @@ import PermissionLayout from '@/components/templates/PermissionLayout';
 import MainLayout from '@/components/templates/layout/MainLayout';
 import TitleBar from '@/components/atoms/TitleBar';
 import MainPannel from '@/components/atoms/MainPannel';
-import TeacherList from './sections/TeacherList';
+// import TeacherList from './sections/TeacherList';
 import { fetchUsers } from '@/store/features/user';
 // import Filter from './sections/Filter';
 // import CustomerTable from './sections/CustomerTable';
@@ -22,24 +22,22 @@ const CustomerListPage = () => {
 
     useEffect(() => {
         dispatch(fetchUsers(filter));
-    }, [filter, dispatch]);
+    }, [filter]);
 
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['customer']} role={['admin', 'teacher']}>
-                <MainLayout>
-                    <TitleBar>顧客一覧</TitleBar>
-                    <MainPannel>
-                        {/* <>teacherList</> */}
-                        <TeacherList/>
-                        {/* <Filter />
-                        <CustomerTable search_url={search_parmam_url} />
-                        <TablePagination /> */}
+        <>
+            <TitleBar>顧客一覧</TitleBar>
+            <MainPannel>
+                {/* <TeacherList/> */}
+                <div>
+                    this is teacherlist page
+                </div>
+                {/* <Filter />
+                <CustomerTable search_url={search_parmam_url} />
+                <TablePagination /> */}
 
-                    </MainPannel>
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+            </MainPannel>
+        </>
     );
 };
 

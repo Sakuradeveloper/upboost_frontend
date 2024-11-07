@@ -30,19 +30,15 @@ const OnlineTestCreatePage = () => {
             // dispatch(fetchProgress(teacher, student));
         dispatch(fetchTest(12))
         // dispatch(fetchSubjects())
-    }, [dispatch]);
+    }, []);
     
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['customer']} role={['admin', 'teacher']}>
-                <MainLayout>
-                    <TitleBar>レッスンの進捗状況</TitleBar>
-                    <MainPannel>
-                        <Test/>
-                    </MainPannel>
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+        <>
+            <TitleBar>レッスンの進捗状況</TitleBar>
+            <MainPannel>
+                <Test/>
+            </MainPannel>
+        </>
     );
 };
 

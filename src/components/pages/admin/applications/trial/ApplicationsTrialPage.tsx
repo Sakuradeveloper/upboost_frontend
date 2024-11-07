@@ -33,20 +33,16 @@ const NotificationAdminPage = () => {
     // },[dispatch, user?.id])
 
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['owner', 'super']} role={['admin']}>
-                <MainLayout>
-                    <TitleBar>無料試聴一覧</TitleBar>
+        <>
+            <TitleBar>無料試聴一覧</TitleBar>
 
-                    <MainPannel>
-                        <ApplicationTableAdmin/>
-                        {/* <Filter />
-                        <BackupTable />
-                        <TablePagination /> */}
-                    </MainPannel>
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+            <MainPannel>
+                <ApplicationTableAdmin/>
+                {/* <Filter />
+                <BackupTable />
+                <TablePagination /> */}
+            </MainPannel>
+        </>
     );
 };
 

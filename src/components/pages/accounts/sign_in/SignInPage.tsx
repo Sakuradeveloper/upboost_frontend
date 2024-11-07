@@ -97,7 +97,7 @@ const SignInPage = () => {
                                     </Link>
                                 </Grid>
                                 <Grid justifyContent="flex-end">
-                                    <Link href='/accounts/sign_up' variant='body2' color='secondary'>
+                                    <Link href='/sign_up' variant='body2' color='secondary'>
                                         サインアップ
                                     </Link>
                                 </Grid>

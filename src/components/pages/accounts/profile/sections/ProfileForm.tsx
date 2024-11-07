@@ -22,48 +22,29 @@ const ProfileForm = () => {
 
     console.log(currentItem.avatar_url, "+++++++++++++++++++++++++++++++++++++++++++")
     useEffect(() => {
-        const fetchProfile = async () => {
-            const res = await getRequest(`/profile`);
-            if (res.status == 200) {
-                // console.log(res.data, "===============>>>>>>>>>>>>>>>>")
-                dispatch(setCurrentItem({
-                    email: res.data?.email||"",
-                    first_name: res.data?.first_name||"",
-                    first_name_furi: res.data?.first_name_furi||"",
-                    is_allowed: res.data?.is_allowed||"",
-                    last_name: res.data?.last_name||"",
-                    last_name_furi: res.data?.last_name_furi||"",
-                    major: res.data?.major||"",
-                    phone: res.data?.phone||"",
-                    role: res.data?.role||"",
-                    avatar: res.data?.avatar || "",
-                    avatar_url: res.data?.avatar_url || "",
-                }));
-            }
-        };
         fetchProfile();
         dispatch(fetchRoleData());
-    }, [dispatch]);
+    }, []);
 
-    // const fetchProfile = async () => {
-    //     const res = await getRequest(`/profile`);
-    //     if (res.status == 200) {
-    //         // console.log(res.data, "===============>>>>>>>>>>>>>>>>")
-    //         dispatch(setCurrentItem({
-    //             email: res.data?.email||"",
-    //             first_name: res.data?.first_name||"",
-    //             first_name_furi: res.data?.first_name_furi||"",
-    //             is_allowed: res.data?.is_allowed||"",
-    //             last_name: res.data?.last_name||"",
-    //             last_name_furi: res.data?.last_name_furi||"",
-    //             major: res.data?.major||"",
-    //             phone: res.data?.phone||"",
-    //             role: res.data?.role||"",
-    //             avatar: res.data?.avatar || "",
-    //             avatar_url: res.data?.avatar_url || "",
-    //         }));
-    //     }
-    // };
+    const fetchProfile = async () => {
+        const res = await getRequest(`/profile`);
+        if (res.status == 200) {
+            // console.log(res.data, "===============>>>>>>>>>>>>>>>>")
+            dispatch(setCurrentItem({
+                email: res.data?.email||"",
+                first_name: res.data?.first_name||"",
+                first_name_furi: res.data?.first_name_furi||"",
+                is_allowed: res.data?.is_allowed||"",
+                last_name: res.data?.last_name||"",
+                last_name_furi: res.data?.last_name_furi||"",
+                major: res.data?.major||"",
+                phone: res.data?.phone||"",
+                role: res.data?.role||"",
+                avatar: res.data?.avatar || "",
+                avatar_url: res.data?.avatar_url || "",
+            }));
+        }
+    };
     // console.log(user?.role.role_id, "==========>>>>>========>>>>>>>>>>")
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();

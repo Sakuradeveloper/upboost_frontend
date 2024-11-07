@@ -10,13 +10,14 @@ import MainPannel from '@/components/atoms/MainPannel';
 import NotificationTable from './sections/NotificationTable';
 import { useAuth } from '@/contexts/AuthContext';
 import { fetchNotification, fetchNotificationTable } from '@/store/features/notification';
+import { Box } from '@mui/material';
 
 const NotificationPage = () => {
-    const dispatch = useAppDispatch();
+    // const dispatch = useAppDispatch();
 
-    const {user} = useAuth();
-    const filter = useAppSelector(state => state.backup.items.filter);
-    const result = useAppSelector(state => state.notification.items.result);
+    // const {user} = useAuth();
+    // const filter = useAppSelector(state => state.backup.items.filter);
+    // const result = useAppSelector(state => state.notification.items.result);
 
     // useEffect(() => {
     //     return () => {
@@ -33,20 +34,16 @@ const NotificationPage = () => {
     // },[dispatch, user?.id])
 
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['owner', 'super']} role={['admin', 'teacher']}>
-                <MainLayout>
-                    <TitleBar>無料試聴一覧</TitleBar>
+        <Box>
+            <TitleBar>無料試聴一覧</TitleBar>
 
-                    <MainPannel>
-                        <NotificationTable/>
-                        {/* <Filter />
-                        <BackupTable />
-                        <TablePagination /> */}
-                    </MainPannel>
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+            <MainPannel>
+                <NotificationTable/>
+                {/* <Filter />
+                <BackupTable />
+                <TablePagination /> */}
+            </MainPannel>
+        </Box>
     );
 };
 

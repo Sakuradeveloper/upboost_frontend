@@ -7,12 +7,13 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { setFilterValue } from '@/store/features/customer';
 import moment from 'moment';
 
-import { Button, Link, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box } from '@mui/material';
+import { Button, Link, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box, Typography } from '@mui/material';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 import { getRequest, postRequest } from '@/utils/axios';
 import { appendMessage } from '@/store/features/utils';
 import { acceptApplication, fetchNotificationTable, fetchNotificationTableAdmin } from '@/store/features/notification';
 import { unwrapResult } from '@reduxjs/toolkit';
+import { EventBusy } from '@mui/icons-material';
 
 interface Props {
     search_url?: string;
@@ -32,10 +33,9 @@ const NotificationTable = ({ search_url }: Props) => {
         id:user?.id,
         read:true
     }
-    // console.log(user?.id, "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}")
+    // console.log(user?.id, "ooooo")
     useEffect(()=>{
         if(user?.id){
-            
             if(user?.role.role_id =='admin')
                 dispatch(fetchNotificationTableAdmin(user?.id))
             else if(user?.role.role_id =='teacher')
@@ -75,6 +75,7 @@ const NotificationTable = ({ search_url }: Props) => {
     return (
         <>
             <TableContainer component={Paper}>
+                {result.data.length>0 ? 
                 <Table aria-label="simple table">
                     <TableHead>
                     <TableRow>
@@ -145,6 +146,14 @@ const NotificationTable = ({ search_url }: Props) => {
                     ))}
                     </TableBody>
                 </Table>
+                :
+                <Box sx={{ textAlign: 'center', padding: 4 }}>
+                    <EventBusy sx={{ fontSize: '4rem', color: '#5d5c68' }} />
+                    <Typography variant="h3" sx={{ color: '#5d5c68', mt: 2 }}>
+                        スケジュールはありません。
+                    </Typography>
+                </Box>
+                }
                 </TableContainer>
 
             {/* <UserAnalysisDialog userId={currentUserId} onClose={() => setCurrentUserId(null)} /> */}

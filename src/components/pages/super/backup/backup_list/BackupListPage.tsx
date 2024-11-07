@@ -21,26 +21,22 @@ const CustomerListPage = () => {
         return () => {
             dispatch(reset());
         };
-    }, [dispatch]);
+    }, []);
 
     useEffect(() => {
         dispatch(fetchBackupList(filter));
-    }, [filter, dispatch]);
+    }, [filter]);
 
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['owner', 'super']} role={['admin', 'teacher', 'student']}>
-                <MainLayout>
-                    <TitleBar>バックアップ一覧</TitleBar>
+        <>
+            <TitleBar>バックアップ一覧</TitleBar>
 
-                    <MainPannel>
-                        <Filter />
-                        <BackupTable />
-                        <TablePagination />
-                    </MainPannel>
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+            <MainPannel>
+                <Filter />
+                <BackupTable />
+                <TablePagination />
+            </MainPannel>
+        </>
     );
 };
 

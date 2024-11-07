@@ -11,18 +11,14 @@ import LabTabs from './sections/LabTabs';
 const TrialFormPage = () => {
 
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['owner', 'super']} role={['student']}>
-                <MainLayout>
-                    <TitleBar>
-                        受講申込みフォーム
-                    </TitleBar>
-                    <MainPannel>
-                        <LabTabs/>
-                    </MainPannel>
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+        <>
+            <TitleBar>
+                受講申込みフォーム
+            </TitleBar>
+            <MainPannel>
+                <LabTabs/>
+            </MainPannel>
+        </>
     );
 };
 

@@ -28,6 +28,7 @@ const TeacherList = () => {
     const filter = useAppSelector(state => state.teacher.items.filter);
     const result = useAppSelector(state => state.teacher.items.result);
 
+    // console.log(result.data.filter(item=>{return item.user_info.role.role_id === 'teacher'}), "========================================");
     return (
         <>
             <Box sx={{ flexGrow: 1, padding: 2 }}>

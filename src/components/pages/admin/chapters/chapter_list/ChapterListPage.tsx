@@ -25,16 +25,12 @@ const ChapterListPage = () => {
     
 
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['customer']} role={['admin']}>
-                <MainLayout>
-                    <TitleBar href='/admin/lecture'>教科書編集</TitleBar>
-                    <MainPannel>
-                        <ChapterList />
-                    </MainPannel>
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+        <>
+            <TitleBar href='/admin/lecture'>教科書編集</TitleBar>
+            <MainPannel>
+                <ChapterList />
+            </MainPannel>
+        </>
     );
 };
 

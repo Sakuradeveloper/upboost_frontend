@@ -30,7 +30,7 @@ const OnlineTestCreatePage = () => {
             // dispatch(fetchProgress(teacher, student));
         dispatch(fetchTest(12))
         // dispatch(fetchSubjects())
-    }, [dispatch]);
+    }, []);
     
     return (
         <AuthLayout>

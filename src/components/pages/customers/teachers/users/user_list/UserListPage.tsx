@@ -24,20 +24,16 @@ const UserListPage = () => {
     }, [user?.id, dispatch ]);
 
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['owner', 'super']} role={['admin', 'teacher']}>
-                <MainLayout>
-                    <TitleBar>学生管理</TitleBar>
+        <>
+            <TitleBar>学生管理</TitleBar>
 
-                    <MainPannel>
-                        {/* <Filter /> */}
-                        <StudentTable />
-                        {/* <TablePagination /> */}
-                        {/* <>userlist</> */}
-                    </MainPannel>
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+            <MainPannel>
+                {/* <Filter /> */}
+                <StudentTable />
+                {/* <TablePagination /> */}
+                {/* <>userlist</> */}
+            </MainPannel>
+        </>
     );
 };
 

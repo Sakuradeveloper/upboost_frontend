@@ -21,19 +21,19 @@ const PermissionLayout = ({ children, permission, role }: Props) => {
         if (user) {
             // if (!permission.includes(user.permission)) {
             //     console.log(permission, user.permission);
-            //     router.push(`/accounts/sign_in?redirect_to=${pathname}`);
+            //     router.push(`/sign_in?redirect_to=${pathname}`);
             // }
 
             // if (user.permission == 'customer' && !['admin', 'member'].includes(user.user_info?.role.role_id)) {
-            //     router.push(`/accounts/sign_in?redirect_to=${pathname}`);
+            //     router.push(`/sign_in?redirect_to=${pathname}`);
             // }
             console.log(user, "------------------user")
             if (!role.includes(user.role?.role_id)) {
                 // console.log(permission, user.permission);
-                router.push(`/accounts/sign_in?redirect_to=${pathname}`);
+                router.push(`/sign_in?redirect_to=${pathname}`);
             }
         }
-    }, [user, pathname, role, router]);
+    }, [user]);
 
     if (user) {
         return children;

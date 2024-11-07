@@ -50,7 +50,7 @@ const token_refresh = async () => {
     if (response.status === 401) {
         deleteCookie(COOKIE_NAME);
         delete apiInstance.defaults.headers['Authorization'];
-        window.location.href = '/accounts/sign_in';
+        window.location.href = '/sign_in';
     }
 
     if (response.status === 200) {
@@ -69,7 +69,7 @@ export const getPublicRequest = async (path: string, params?: any): Promise<IRes
         dispatch(appendMessage({ type: 'success', message: response.data.msg }));
     if ((response.status === 400 || response.status == 404) && response.data.msg)
         dispatch(appendMessage({ type: 'warning', message: response.data.msg }));
-    if (response.status === 403) window.location.href = '/accounts/sign_in';
+    if (response.status === 403) window.location.href = '/sign_in';
     if (response.status === 500) dispatch(appendMessage({ type: 'error', message: response.data.msg }));
     dispatch(loading(false));
     return response;
@@ -85,14 +85,14 @@ export const getRequest = async (path: string, params?: any): Promise<IResponse>
                 response = await apiInstance.get<AxiosResponse, IResponse>(path, { params: params });
             }
         } else {
-            window.location.href = '/accounts/sign_in';
+            window.location.href = '/sign_in';
         }
     }
     if (response.status === 200 && response.data.msg)
         dispatch(appendMessage({ type: 'success', message: response.data.msg }));
     if ((response.status === 400 || response.status == 404) && response.data.msg)
         dispatch(appendMessage({ type: 'warning', message: response.data.msg }));
-    if (response.status === 403) window.location.href = '/accounts/sign_in';
+    if (response.status === 403) window.location.href = '/sign_in';
     if (response.status === 500) dispatch(appendMessage({ type: 'error', message: response.data.msg }));
     dispatch(loading(false));
     return response;
@@ -112,14 +112,14 @@ export const getBlobRequest = async (path: string, params?: any): Promise<IRespo
                 response = await blobInstance.get<AxiosResponse, IResponse>(path, { params: params });
             }
         } else {
-            window.location.href = '/accounts/sign_in';
+            window.location.href = '/sign_in';
         }
     }
     if (response.status === 200 && response.data.msg)
         dispatch(appendMessage({ type: 'success', message: response.data.msg }));
     if ((response.status === 400 || response.status == 404) && response.data.msg)
         dispatch(appendMessage({ type: 'warning', message: response.data.msg }));
-    if (response.status === 403) window.location.href = '/accounts/sign_in';
+    if (response.status === 403) window.location.href = '/sign_in';
     if (response.status === 500) dispatch(appendMessage({ type: 'error', message: response.data.msg }));
     dispatch(loading(false));
     return response;
@@ -135,7 +135,7 @@ export const postRequest = async (path: string, payload: any): Promise<IResponse
                 response = await apiInstance.post<AxiosResponse, IResponse>(path, payload);
             }
         } else {
-            window.location.href = '/accounts/sign_in';
+            window.location.href = '/sign_in';
         }
     }
     if (response.status === 200 && response.data.msg)
@@ -143,7 +143,7 @@ export const postRequest = async (path: string, payload: any): Promise<IResponse
     if ((response.status === 400 || response.status == 404) && response.data.msg)
         dispatch(appendMessage({ type: 'warning', message: response.data.msg }));
 
-    if (response.status === 403) window.location.href = '/accounts/sign_in';
+    if (response.status === 403) window.location.href = '/sign_in';
     if (response.status === 500) dispatch(appendMessage({ type: 'error', message: response.data.msg }));
     dispatch(loading(false));
     return response;
@@ -167,7 +167,7 @@ export const postFormdata = async (path: string, formData: FormData): Promise<IR
                 });
             }
         } else {
-            window.location.href = '/accounts/sign_in';
+            window.location.href = '/sign_in';
         }
     }
     if (response.status === 200 && response.data.msg)
@@ -175,7 +175,7 @@ export const postFormdata = async (path: string, formData: FormData): Promise<IR
     if ((response.status === 400 || response.status == 404) && response.data.msg)
         dispatch(appendMessage({ type: 'warning', message: response.data.msg }));
 
-    if (response.status === 403) window.location.href = '/accounts/sign_in';
+    if (response.status === 403) window.location.href = '/sign_in';
     if (response.status === 500) dispatch(appendMessage({ type: 'error', message: response.data.msg }));
     dispatch(loading(false));
     return response;
@@ -191,7 +191,7 @@ export const patchRequest = async (path: string, payload: any): Promise<IRespons
                 response = await apiInstance.patch<AxiosResponse, IResponse>(path, payload);
             }
         } else {
-            window.location.href = '/accounts/sign_in';
+            window.location.href = '/sign_in';
         }
     }
     if (response.status === 200 && response.data.msg)
@@ -199,7 +199,7 @@ export const patchRequest = async (path: string, payload: any): Promise<IRespons
     if ((response.status === 400 || response.status == 404) && response.data.msg)
         dispatch(appendMessage({ type: 'warning', message: response.data.msg }));
 
-    if (response.status === 403) window.location.href = '/accounts/sign_in';
+    if (response.status === 403) window.location.href = '/sign_in';
     if (response.status === 500) dispatch(appendMessage({ type: 'error', message: response.data.msg }));
     dispatch(loading(false));
     return response;
@@ -223,7 +223,7 @@ export const patchFormData = async (path: string, formData: FormData): Promise<I
                 });
             }
         } else {
-            window.location.href = '/accounts/sign_in';
+            window.location.href = '/sign_in';
         }
     }
     if (response.status === 200 && response.data.msg)
@@ -231,7 +231,7 @@ export const patchFormData = async (path: string, formData: FormData): Promise<I
     if ((response.status === 400 || response.status == 404) && response.data.msg)
         dispatch(appendMessage({ type: 'warning', message: response.data.msg }));
 
-    if (response.status === 403) window.location.href = '/accounts/sign_in';
+    if (response.status === 403) window.location.href = '/sign_in';
     if (response.status === 500) dispatch(appendMessage({ type: 'error', message: response.data.msg }));
     dispatch(loading(false));
     return response;
@@ -247,7 +247,7 @@ export const deleteRequest = async (path: string, params: any): Promise<IRespons
                 response = await apiInstance.delete<AxiosResponse, IResponse>(path, { params: params });
             }
         } else {
-            window.location.href = '/accounts/sign_in';
+            window.location.href = '/sign_in';
         }
     }
     if (response.status === 200 && response.data.msg)
@@ -255,7 +255,7 @@ export const deleteRequest = async (path: string, params: any): Promise<IRespons
     if ((response.status === 400 || response.status == 404) && response.data.msg)
         dispatch(appendMessage({ type: 'warning', message: response.data.msg }));
 
-    if (response.status === 403) window.location.href = '/accounts/sign_in';
+    if (response.status === 403) window.location.href = '/sign_in';
     if (response.status === 500) dispatch(appendMessage({ type: 'error', message: response.data.msg }));
     dispatch(loading(false));
     return response;

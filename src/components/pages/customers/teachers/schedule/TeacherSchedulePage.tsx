@@ -30,20 +30,16 @@ const CustomerListPage = () => {
     //   },[])
 
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['teacher', 'owner']} role={['teacher', 'admin']}>
-                <MainLayout>
-                    <TitleBar>
-                        <Box className='w-full'>
-                            <ScheduleTitle/>
-                        </Box>
-                    </TitleBar>
-                    <MainPannel>
-                        <Schedule/>
-                    </MainPannel>
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+        <>
+            <TitleBar>
+                <Box className='w-full'>
+                    <ScheduleTitle/>
+                </Box>
+            </TitleBar>
+            <MainPannel>
+                <Schedule/>
+            </MainPannel>
+        </>
     );
 };
 

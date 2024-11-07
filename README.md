@@ -1,178 +1,36 @@
-# SKG アプリケーション
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## 顧客名: 曽我工業株式会社
+## Getting Started
 
-このプロジェクトは、曽我工業株式会社の建設業向け案件管理システムです。顧客の業務効率化を支援するために、アナログ手法をデジタル化し、データの統一管理と視覚化を実現します。
+First, run the development server:
 
-## 目次
-
-- [SKG アプリケーション](#skg-アプリケーション)
-  - [顧客名: 曽我工業株式会社](#顧客名-曽我工業株式会社)
-  - [目次](#目次)
-  - [プロジェクトの目的](#プロジェクトの目的)
-  - [主な課題](#主な課題)
-  - [具体的な業務課題](#具体的な業務課題)
-  - [解決したい問題](#解決したい問題)
-  - [期待される効果](#期待される効果)
-  - [前提条件](#前提条件)
-  - [プロジェクトのセットアップ](#プロジェクトのセットアップ)
-  - [プロジェクト構造](#プロジェクト構造)
-  - [追加ツール](#追加ツール)
-  - [ライセンス](#ライセンス)
-
-## プロジェクトの目的
-
-- 建設業のクライアントの案件を管理するシステムを開発し、業務効率化を支援。
-- クライアントの業務プロセスをデジタル化し、効率化とデータの視覚化を実現。
-
-## 主な課題
-
-- アナログな管理手法が広く使われており、ITリテラシーが低い。
-- ナレッジの蓄積やデータ分析が困難で、プロジェクトの進捗が不透明。
-
-## 具体的な業務課題
-
-- 手作業やExcel管理によるエラーや確認漏れの発生。
-- 進捗会議での確認作業が長引き、非効率的である。
-- 支払・請求管理の属人化により、全体像が把握しづらい。
-- 見積もり手法が統一されておらず、報告や引き継ぎに時間がかかる。
-
-## 解決したい問題
-
-- データ管理を統一し、プロジェクトの進捗とコスト管理を正確に行う。
-- 支払額・請求額の把握精度を高める。
-
-## 期待される効果
-
-- 進捗管理の改善と効率化。
-- 正確な支払い・請求管理。
-- ナレッジの蓄積による組織力の向上。
-
-## 前提条件
-
-- Node.js（バージョン16以上）
-- Yarn（バージョン1.x）
-- Docker（オプション、コンテナ化用）
-
-## プロジェクトのセットアップ
-
-1. **依存関係のインストール**
-
-   ```bash
-   yarn install
-   ```
-
-2. **Gitフックの準備**
-
-   Huskyは、コミット時にリントを実行するように設定されています。以下のコマンドで準備を行います。
-
-   ```bash
-   yarn prepare
-   ```
-
-3. **開発サーバーの起動**
-
-   開発サーバーを開始するには、以下のコマンドを実行します。
-
-   ```bash
-   yarn dev
-   ```
-
-   これにより、Nuxt開発サーバーが `http://localhost:3000` で起動します。
-
-4. **プロダクション用にビルド**
-
-   アプリケーションをプロダクション用にビルドするには、以下のコマンドを実行します。
-
-   ```bash
-   yarn build
-   ```
-
-   ビルド後、次のコマンドでプロダクションビルドをプレビューできます。
-
-   ```bash
-   yarn preview
-   ```
-
-5. **リントとフォーマットの実行**
-
-   - **ESLint**: コードベースに対してESLintを実行します。
-
-     ```bash
-     yarn lint:eslint
-     ```
-
-   - **Prettier**: Prettierでコードフォーマットをチェックします。
-
-     ```bash
-     yarn lint:prettier
-     ```
-
-   - **Stylelint**: CSS/SCSSファイルに対してStylelintを実行します。
-
-     ```bash
-     yarn lint:style
-     ```
-
-   - **リントの問題を修正**
-
-     ```bash
-     yarn lintfix
-     ```
-
-6. **テストの実行**
-
-   Vitestを使用してテストを行います。
-
-   - すべてのテストを実行するには:
-
-     ```bash
-     yarn test
-     ```
-
-   - UIでテストを実行するには:
-
-     ```bash
-     yarn test:ui
-     ```
-
-7. **Dockerサポート**
-
-   アプリケーションをDockerコンテナで実行するには、以下の手順を実行します。
-
-   - **Dockerイメージをビルド**
-
-     ```bash
-     docker-compose build
-     ```
-
-   - **Dockerコンテナを実行**
-
-     ```bash
-     docker-compose up
-     ```
-
-## プロジェクト構造
-
-```
-nuxt-app/
-├── .gitignore                # Gitで無視するファイル
-├── Dockerfile                # コンテナ化のためのDockerfile
-├── docker-compose.yml        # Docker Composeの設定
-├── package.json              # プロジェクトのパッケージ設定
-├── yarn.lock                 # 依存関係のロックファイル
-├── src/                      # コンポーネント、ページ、アセットが含まれるソースコードフォルダー
-├── tests/                    # テストファイル
-└── (その他の必要なファイル)
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## 追加ツール
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- **Husky**: コミット前にリントを実行するためのフック。
-- **Lint-Staged**: ステージされたファイルのみでリントを実行します。
-- **Prettier**: 一貫したコードフォーマットを提供します。
-- **Stylelint**: CSSおよびSCSSファイルのスタイリング問題をリントします。
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## ライセンス
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-このプロジェクトはMITライセンスのもとにライセンスされています。
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

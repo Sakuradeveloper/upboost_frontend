@@ -26,7 +26,7 @@ const UserEditPage = () => {
     useEffect(() => {
         dispatch(clearCurrentItem());
         dispatch(fetchUser(parseInt(`${id}`)));
-    }, [id, dispatch]);
+    }, [id]);
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -56,41 +56,37 @@ const UserEditPage = () => {
     };
 
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['super', 'owner']} role={['admin', 'teacher']}>
-                <MainLayout>
-                    <TitleBar href='/admin/users'>担当情報</TitleBar>
+        <>
+            <TitleBar href='/admin/users'>担当情報</TitleBar>
 
-                    <MainPannel>
-                        <form className='w-full flex flex-col gap-[10px]' onSubmit={handleSubmit}>
-                            <UserForm />
+            <MainPannel>
+                <form className='w-full flex flex-col gap-[10px]' onSubmit={handleSubmit}>
+                    <UserForm />
 
-                            {/* ************************************************************************ */}
-                            <div className='mt-[16px] w-full flex items-center gap-[16px]'>
-                                <Button type='submit' variant='contained' color='secondary'>
-                                    保存する
-                                </Button>
+                    {/* ************************************************************************ */}
+                    <div className='mt-[16px] w-full flex items-center gap-[16px]'>
+                        <Button type='submit' variant='contained' color='secondary'>
+                            保存する
+                        </Button>
 
-                                <Button
-                                    type='button'
-                                    variant='contained'
-                                    color='inherit'
-                                    onClick={() => setCurrentDialog('delete')}
-                                >
-                                    削除する
-                                </Button>
-                            </div>
-                        </form>
-                    </MainPannel>
+                        <Button
+                            type='button'
+                            variant='contained'
+                            color='inherit'
+                            onClick={() => setCurrentDialog('delete')}
+                        >
+                            削除する
+                        </Button>
+                    </div>
+                </form>
+            </MainPannel>
 
-                    <ConfirmDialog
-                        open={currentDialog === 'delete'}
-                        handleClose={() => setCurrentDialog('')}
-                        handleConfirm={handleDelete}
-                    />
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+            <ConfirmDialog
+                open={currentDialog === 'delete'}
+                handleClose={() => setCurrentDialog('')}
+                handleConfirm={handleDelete}
+            />
+        </>
     );
 };
 

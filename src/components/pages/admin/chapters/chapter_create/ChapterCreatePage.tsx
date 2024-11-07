@@ -23,17 +23,13 @@ const ChapterCreatePage = () => {
     
 
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['customer']} role={['admin']}>
-                <MainLayout>
-                    <TitleBar href='/customers'>教科書編集</TitleBar>
+        <>
+            <TitleBar href='/customers'>教科書編集</TitleBar>
 
-                    <MainPannel>
-                            <ChapterForm />
-                    </MainPannel>
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+            <MainPannel>
+                    <ChapterForm />
+            </MainPannel>
+        </>
     );
 };
 

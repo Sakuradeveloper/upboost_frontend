@@ -9,7 +9,7 @@ const TrialFormPage = () => {
                 <TitleBar>
                     <div className=' w-full flex justify-between items-center'>
                         <h5 className='text-[#F29C2E]'>無料体験レッスンお申し込み</h5>
-                        <div><a href="/accounts/sign_up" className='text-[#F29C2E]'>会員登録</a></div>
+                        <div><a href="/sign_up" className='text-[#F29C2E]'>会員登録</a></div>
                     </div>
                 </TitleBar>
                 <div className='w-full bg-white rounded-lg'>

@@ -30,7 +30,7 @@ const PasswordForgotPage = () => {
         const res = await postRequest('/auth/password/forgot', currentItem);
         if (res.status == 200) {
             dispatch(clearError());
-            router.push('/accounts/sign_in');
+            router.push('/sign_in');
         }
 
         if (res.status == 422 && res.data.errors) {
@@ -82,7 +82,7 @@ const PasswordForgotPage = () => {
                             </Button>
                             <Grid container>
                                 <Grid item xs>
-                                    <Link href='/accounts/sign_in' variant='body2' color='secondary'>
+                                    <Link href='/sign_in' variant='body2' color='secondary'>
                                         ログインはこちら
                                     </Link>
                                 </Grid>

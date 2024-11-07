@@ -17,8 +17,8 @@ const AuthLayout = ({ children }: Props) => {
     const { isAuthenticated, user, loading, logout } = useAuth();
 
     useEffect(() => {
-        if (!isAuthenticated && !loading) router.push(`/accounts/sign_in?redirect_to=${pathname}`);
-    }, [isAuthenticated, loading, pathname, params, router]);
+        if (!isAuthenticated && !loading) router.push(`/sign_in?redirect_to=${pathname}`);
+    }, [isAuthenticated, loading, pathname, params]);
 
     if (loading) return null;
 

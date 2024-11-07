@@ -30,6 +30,7 @@ const SignUpPage = () => {
     const currentItem = useAppSelector(state => state.login.item.form);
     const errors = useAppSelector(state => state.login.item.errors);
     const shared_data = useAppSelector(state => state.shared_data);
+    console.log(shared_data.role_data.filter(role => role.role_id !== 'admin'),"============>")
 
     useEffect(() => {
         dispatch(fetchRoleData());
@@ -112,7 +113,7 @@ const SignUpPage = () => {
                                 error={errors.confirmPass ? true : false}
                                 helperText={errors.confirmPass ? errors.comfirmPass : ''}
                             />
-                            <FormControl fullWidth required sx={{ mt:2 }}>
+                            {shared_data.role_data.length ? <FormControl fullWidth required sx={{ mt:2 }}>
                                 <InputLabel id="demo-simple-select-label">役割</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
@@ -124,21 +125,21 @@ const SignUpPage = () => {
                                     <MenuItem value=''>選択する</MenuItem>
                                     {shared_data.role_data
                                         .filter(role => role.role_id !== 'admin')
-                                        .map(({ id, name }) => (
-                                            <MenuItem value={id} key={id}>
-                                            {name}
+                                        .map(({ id, name, role_id }) => (
+                                            <MenuItem value={role_id} key={id}>
+                                                {name}
                                             </MenuItem>
                                     ))}
                                     {/* <MenuItem value='teacher'>教師</MenuItem>
                                     <MenuItem value='student'>生徒</MenuItem> */}
                                 </Select>
-                            </FormControl>
+                            </FormControl>:''}
                             <Button type='submit' fullWidth variant='contained' color='secondary' sx={{ mt: 3, mb: 2 }}>
                                 登録
                             </Button>
                             <Grid container>
                                 <Grid item xs>
-                                    <Link href='/accounts/sign_in' variant='body2' color='secondary'>
+                                    <Link href='/sign_in' variant='body2' color='secondary'>
                                         ログインウィンドウへ
                                     </Link>
                                 </Grid>

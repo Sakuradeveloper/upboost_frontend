@@ -29,27 +29,18 @@ const AccountActivatePage = () => {
     const errors = useAppSelector(state => state.reset_password.item.errors);
 
     useEffect(() => {
-        const validateToken = async () => {
-            const token = params.get('token') || '';
-            const res = await getRequest(`/account/activate?token=${token}`);
-    
-            if (res.status == 200) {
-                dispatch(setCurrentItemValue({ token: token }));
-            }
-            setLoading(res.status);
-        };
         validateToken();
-    }, [dispatch, params]);
+    }, []);
 
-    // const validateToken = async () => {
-    //     const token = params.get('token') || '';
-    //     const res = await getRequest(`/account/activate?token=${token}`);
+    const validateToken = async () => {
+        const token = params.get('token') || '';
+        const res = await getRequest(`/account/activate?token=${token}`);
 
-    //     if (res.status == 200) {
-    //         dispatch(setCurrentItemValue({ token: token }));
-    //     }
-    //     setLoading(res.status);
-    // };
+        if (res.status == 200) {
+            dispatch(setCurrentItemValue({ token: token }));
+        }
+        setLoading(res.status);
+    };
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -57,7 +48,7 @@ const AccountActivatePage = () => {
         const res = await postRequest('/account/activate', currentItem);
         if (res.status == 200) {
             dispatch(clearError());
-            router.push('/accounts/sign_in');
+            router.push('/sign_in');
         }
 
         if (res.status == 422 && res.data.errors) {

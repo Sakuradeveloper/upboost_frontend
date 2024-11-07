@@ -23,18 +23,13 @@ const UserEditPage = () => {
     }, [dispatch, id]);
 
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['super', 'owner']} role={['admin', 'teacher']}>
-                <MainLayout>
-                    <TitleBar href='/admin/chapters'>教科書管理</TitleBar>
+        <>
+            <TitleBar href='/admin/chapters'>教科書管理</TitleBar>
 
-                    <MainPannel>
-                        <ChapterDetail id={subjectId}/>
-                    </MainPannel>
-
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+            <MainPannel>
+                <ChapterDetail id={subjectId}/>
+            </MainPannel>
+        </>
     );
 };
 

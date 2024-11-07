@@ -16,6 +16,21 @@ import { AnimatePresence } from 'framer-motion';
 import Loading from '@/components/templates/Loading';
 import Pending from '@/components/templates/Pending';
 import theme from '@/components/templates/themes';
+
+import { Noto_Sans_JP, Kosugi } from 'next/font/google';
+
+const notoSansJP = Noto_Sans_JP({
+    weight: ['400', '700'],
+    subsets: ['latin'],
+    display: 'swap',
+});
+
+const kosugi = Kosugi({
+    weight: '400',
+    subsets: ['latin'],
+    display: 'swap',
+});
+
 interface Props {
     children: ReactNode;
 }
@@ -50,7 +65,7 @@ const ComponentWrapper = ({ children }: { children: React.ReactNode }) => {
 
 const DefaultLayout = ({ children }: Props) => {
     return (
-        <body className='w-full'>
+        <body className={`${notoSansJP.className} ${kosugi.className} w-full`}>
             <AnimatePresence>
                 <Providers>
                     <AuthProvider>

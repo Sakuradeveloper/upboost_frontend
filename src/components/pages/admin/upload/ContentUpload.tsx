@@ -12,20 +12,16 @@ import VideoUploadForm from '@/components/molecules/VideoUploadForm';
 const UserListPage = () => {
 
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['owner', 'super']} role={['admin', 'teacher']}>
-                <MainLayout>
-                    <TitleBar>アップロード</TitleBar>
+        <>
+            <TitleBar>アップロード</TitleBar>
 
-                    <MainPannel>
-                        <div>
-                            <h1>Upload Video</h1>
-                            <VideoUploadForm />
-                        </div>
-                    </MainPannel>
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+            <MainPannel>
+                <div>
+                    <h1>Upload Video</h1>
+                    <VideoUploadForm />
+                </div>
+            </MainPannel>
+        </>
     );
 };
 

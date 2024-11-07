@@ -5,7 +5,6 @@ import { useAuth } from '@/contexts/AuthContext';
 
 import { AiFillStop, AiFillPlayCircle, AiFillPauseCircle, AiFillHome } from 'react-icons/ai';
 import { postRequest } from '@/utils/axios';
-import Image from 'next/image';
 
 // Sample test-taking component
 const TestTakingPage = () => {
@@ -60,18 +59,11 @@ const TestTakingPage = () => {
   };
 
   const handleStopAudio = (questionId: number) => {
-    const audioRef = audioRefs.current[questionId];
-
-    if (audioRef) {
-      audioRef.pause();
-      audioRef.currentTime = 0; // Reset to the beginning
+    const currentAudio = audioRefs.current[questionId];
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0; // Reset to the beginning
     }
-    // if (audioRefs.current[questionId]) {
-    //   audioRefs.current[questionId]?.pause();
-    //   if (audioRefs.current[questionId] !== null) {
-    //     audioRefs.current[questionId].currentTime = 0; // Reset to the beginning
-    //   }
-    // }
   };
 
   // Calculate the score when the test is submitted
@@ -123,7 +115,7 @@ const TestTakingPage = () => {
           {/* Display image if provided */}
           {question.dropbox_image_url && (
             <Box mt={2} mb={2}>
-              <Image src={question.dropbox_image_url} alt={`Question ${index + 1}`} style={{ width: '100%' }} />
+              <img src={question.dropbox_image_url} alt={`Question ${index + 1}`} style={{ width: '100%' }} />
             </Box>
           )}
 

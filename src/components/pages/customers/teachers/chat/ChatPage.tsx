@@ -31,23 +31,19 @@ const ChatPage = () => {
     }, [user?.id, dispatch ]);
 
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['teacher', 'owner']} role={['teacher', 'admin']}>
-                <MainLayout>
-                    <TitleBar>
-                        <Box className='w-full'>
-                        チャット
-                        </Box>
-                    </TitleBar>
-                    <MainPannel>
-                        {/* <ChatConnect/> */}
-                        {/* <ChatRoom/> */}
-                        <ChatList/>
-                        {/* <TestRoom/> */}
-                    </MainPannel>
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+        <>
+            <TitleBar>
+                <Box className='w-full'>
+                チャット
+                </Box>
+            </TitleBar>
+            <MainPannel>
+                {/* <ChatConnect/> */}
+                {/* <ChatRoom/> */}
+                <ChatList/>
+                {/* <TestRoom/> */}
+            </MainPannel>
+        </>
     );
 };
 

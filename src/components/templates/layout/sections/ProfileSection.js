@@ -41,7 +41,7 @@ const ProfileSection = () => {
 
     const handleLogout = async () => {
         logout && logout();
-        router.push('/accounts/sign_in');
+        router.push('/sign_in');
     };
 
     const handleClose = event => {

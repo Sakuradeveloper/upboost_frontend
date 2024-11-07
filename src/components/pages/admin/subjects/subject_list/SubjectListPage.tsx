@@ -24,16 +24,12 @@ const SubjectListPage = () => {
 
 
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['customer']} role={['admin']}>
-                <MainLayout>
-                    <TitleBar href='/admin/subjects'>教科書管理</TitleBar>
-                    <MainPannel>
-                        <SubjectList />
-                    </MainPannel>
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+        <>
+            <TitleBar href='/admin/subjects'>教科書管理</TitleBar>
+            <MainPannel>
+                <SubjectList />
+            </MainPannel>
+        </>
     );
 };
 

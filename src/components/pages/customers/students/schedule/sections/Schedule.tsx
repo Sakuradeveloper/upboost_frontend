@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react';
 import { Box, CardContent, Typography } from '@mui/material';
 import dayjs, { Dayjs } from 'dayjs';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { EventBusy } from '@mui/icons-material';
+import { EventBusy, People } from '@mui/icons-material';
 import { fetchSchedules } from '@/store/features/schedule';
 import { useAuth } from '@/contexts/AuthContext';
 
@@ -21,14 +21,15 @@ function CalendarApp() {
   const { user } = useAuth();
   const dispatch = useAppDispatch();
   const result = useAppSelector(state => state.lecture_schedule.items.result);
-
+  console.log("result DAta : ", result.data)
   console.log(user, ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
   const events = useMemo(() => result.data.map((schedule:any) => ({
     id: schedule.id,
     title: schedule?.students ?schedule?.students?.name:"保留中"    , // Assuming there's a title
     start: dayjs(`${schedule.date} ${schedule.start_time}`).format('YYYY-MM-DD HH:mm'),
     end: dayjs(`${schedule.date} ${schedule.end_time}`).format('YYYY-MM-DD HH:mm'),
-    calendarId: schedule.state
+    calendarId: schedule.state,
+    _meeting: schedule?.teacher?.meeting,
   })), [result.data]);
 
 

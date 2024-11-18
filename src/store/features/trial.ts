@@ -70,37 +70,6 @@ export const allowApplicationTrial = createAsyncThunk('allowApplicationTrial', a
     return res;
 })
 
-
-
-
-
-// export const fetchNotificationAdmin = createAsyncThunk('fetchnotificationAdmin', async (id: number) => {
-//     const res = await getRequest(`/v0/admin/notification/${id}`);
-//     return res;
-// });
-
-// export const fetchNotificationTable = createAsyncThunk('fetchNotificationTable', async (id: number) => {
-//     const res = await postRequest(`/notification/${id}`, id);
-//     return res;
-// });
-
-// export const fetchNotificationTableAdmin = createAsyncThunk('fetchNotificationTableAdmin', async (id: number) => {
-//     const res = await postRequest(`/v0/admin/notification/${id}`, id);
-//     return res;
-// });
-
-
-
-// export const allowApplication = createAsyncThunk('allowapplication', async (id:number)=>{
-//     const res = await getRequest(`/v0/admin/notification/allow/${id}`)
-//     return res;
-// })
-
-// export const updateReadState = createAsyncThunk('/createUpdateSate', async(id:number)=>{
-//     const res = await getRequest(`/notification/accept/${id}`)
-//     return res;
-// })
-
 export const slice = createSlice({
     name: 'trial',
     initialState,
@@ -209,70 +178,6 @@ export const slice = createSlice({
                 }
             }
         })
-        // builder.addCase(fetchNotificationAdmin.fulfilled, (state, action)=>{
-        //     if(action.payload.data.data){
-        //         state.items = {
-        //             ...state.items,
-        //             result:action.payload.data as any
-        //         }
-        //     }
-        // });
-        // // builder.addCase(fetchNotificationTable.fulfilled, (state, action)=>{
-        // //     if(action.payload.data.data){
-        // //         const newDataArray = state.items.result.data.map(item =>
-        // //             item.id === action.payload.data.data.id ? action.payload.data.data : item
-        // //         );
-        // //         state.items = {
-        // //             ...state.items,
-        // //             result:{
-        // //                 ...state.items.result,
-        // //                 data:newDataArray
-        // //             }
-        // //         }
-        // //     }
-        // // });
-        // builder.addCase(fetchNotificationTableAdmin.fulfilled, (state, action)=>{
-        //     if(action.payload.data.data){
-        //         const newDataArray = state.items.result.data.map(item =>
-        //             item.id === action.payload.data.data.id ? action.payload.data.data : item
-        //         );
-        //         state.items = {
-        //             ...state.items,
-        //             result:{
-        //                 ...state.items.result,
-        //                 data:newDataArray
-        //             }
-        //         }
-        //     }
-        // });
-        // builder.addCase(allowApplicationTrial.fulfilled, (state, action)=>{
-        //     if(action.payload.data.data){
-        //         const newDataArray = state.items.result.data.map(item =>
-        //             item.id === action.payload.data.data.id ? action.payload.data.data : item
-        //         );
-        //         state.items = {
-        //             ...state.items,
-        //             result:{
-        //                 ...state.items.result,
-        //                 data:newDataArray
-        //             }
-        //         }
-        //     }
-        // })
-        // builder.addCase(updateReadState.fulfilled, (state, action)=>{
-        //     if(action.payload.data.data){
-        //         const newDataArray = state.items.result.data.map(item =>
-        //             item.id === action.payload.data.data.id ? action.payload.data.data : item
-        //         );
-        //         state.items = {
-        //             ...state.items,
-        //             result:{
-        //                 ...state.items.result,
-        //                 data:newDataArray
-        //             }
-        //         }
-        //     }
-        // })
     }
 });
 

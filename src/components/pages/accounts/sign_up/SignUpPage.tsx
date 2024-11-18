@@ -124,7 +124,7 @@ const SignUpPage = () => {
                                 >
                                     <MenuItem value=''>選択する</MenuItem>
                                     {shared_data.role_data
-                                        .filter(role => role.role_id !== 'admin')
+                                        .filter(role => role.role_id == 'teacher')
                                         .map(({ id, name, role_id }) => (
                                             <MenuItem value={role_id} key={id}>
                                                 {name}

@@ -23,7 +23,7 @@ import { postRequest } from '@/utils/axios';
 import { useAuth } from '@/contexts/AuthContext';
 import CustomDateGridEvent from './CustomDateGridEvent';
 import CustomTimeGridEvent from './CustomTimeGridEvent';
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField, Typography } from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Link, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 import { fetchLectureSchedules } from '@/store/features/lecture_schedule';
 
@@ -89,14 +89,47 @@ const ScheduleCalendar = ( {events} : Props)  => {
     };
 
     const handleCloseModal = () => {
+
       setOpenModal(false);
       setSelectedEvent(null);
       setInputTime('');
     };
 
+    const handleLecture = (link: string) => {
+      try {
+        // Destructure the updatedEvent object for cleaner code
+        const { id, title, start, end } = selectedEvent;
+        // Format the request data only once
+        // const formattedStart = dayjs(start).format('HH:mm');
+        // const formattedEnd = dayjs(end).format('HH:mm');
+        // const formattedDate = dayjs(start).format('YYYY-MM-DD');
+        const start_time = dayjs(start).format('YYYY-MM-DD HH:mm');
+        const end_time = dayjs(end).format('YYYY-MM-DD HH:mm');
+        // Send the update request to the API
+        postRequest(`/v0/student/schedule/${user?.id}`, {
+            schedule_id:id,
+            title,
+            start_time: start_time,
+            end_time: end_time,
+            user_id: user?.id
+        })
+        .then(res => {
+            if(res.status == 200){
+              dispatch(fetchLectureSchedules(user?.id));
+            }
+        })
+      } catch (error) {
+        // Handle any errors during the request
+        console.error('Failed to update event', error);
+        // You can also set error state here or alert the user
+      }
+      handleCloseModal();
+      window.open(link, '_blank')
+    }
+
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       setInputTime(event.target.value);
-    };
+    };432
 
     const scrollController = createScrollControllerPlugin({
         initialScroll: '20:50'
@@ -224,7 +257,7 @@ const ScheduleCalendar = ( {events} : Props)  => {
     return (
       <>
         <ScheduleXCalendar calendarApp={calendar} />
-        <Dialog
+        {/* <Dialog
           open={openModal}
           onClose={handleCloseModal}
           fullWidth
@@ -244,6 +277,30 @@ const ScheduleCalendar = ( {events} : Props)  => {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleDisagree} color="secondary">
+              拒否する
+            </Button>
+            <Button onClick={handleAgree} color="primary">
+              受け入れる
+            </Button>
+          </DialogActions>
+        </Dialog> */}
+        <Dialog
+          open={openModal}
+          onClose={handleCloseModal}
+          fullWidth
+          maxWidth="sm"
+        >
+          <DialogTitle>講義を始めますか？</DialogTitle>
+          {/* <DialogContent>
+            <DialogContentText>
+              講義を始めますか？
+            </DialogContentText>
+            {selectedEvent && (
+              <Link href={selectedEvent._meeting}>Zoom meeting</Link>
+            )}
+          </DialogContent> */}
+          <DialogActions>
+            <Button onClick={()=>handleLecture(selectedEvent._meeting)} color="secondary">
               拒否する
             </Button>
             <Button onClick={handleAgree} color="primary">

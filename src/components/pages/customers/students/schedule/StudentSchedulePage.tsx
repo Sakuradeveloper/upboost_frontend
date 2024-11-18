@@ -20,9 +20,9 @@ import { Box } from '@mui/material';
 // import TablePagination from './sections/TablePagination';
 
 const StudentSchedulePage = () => {
-    const dispatch = useAppDispatch();
-    const { user } = useAuth();
-    const filter = useAppSelector(state => state.teacher.items.filter);
+    // const dispatch = useAppDispatch();
+    // const { user } = useAuth();
+    // const filter = useAppSelector(state => state.teacher.items.filter);
 
     // useEffect(()=>{
     //     if(user?.id)
@@ -30,20 +30,16 @@ const StudentSchedulePage = () => {
     //   },[])
 
     return (
-        <AuthLayout>
-            <PermissionLayout permission={['teacher', 'owner']} role={['teacher', 'admin', 'student']}>
-                <MainLayout>
-                    <TitleBar>
-                        <Box className='w-full'>
-                            <ScheduleTitle/>
-                        </Box>
-                    </TitleBar>
-                    <MainPannel>
-                        <Schedule/>
-                    </MainPannel>
-                </MainLayout>
-            </PermissionLayout>
-        </AuthLayout>
+        <>
+            <TitleBar>
+                <Box className='w-full'>
+                    <ScheduleTitle/>
+                </Box>
+            </TitleBar>
+            <MainPannel>
+                <Schedule/>
+            </MainPannel>
+        </>
     );
 };
 

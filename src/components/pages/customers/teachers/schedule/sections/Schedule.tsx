@@ -22,7 +22,7 @@ function CalendarApp() {
   const result = useAppSelector(state => state.schedule.items.result);
 
   console.log(result.data, ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-  const events = useMemo(() => result.data.map((schedule:any) => ({
+  const events = useMemo(() => result?.data?.map((schedule:any) => ({
     id: schedule.id,
     title: schedule?.students ?schedule?.students?.name:"保留中"    , // Assuming there's a title
     start: dayjs(`${schedule.date} ${schedule.start_time}`).format('YYYY-MM-DD HH:mm'),

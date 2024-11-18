@@ -66,6 +66,22 @@ const pages = {
             ]
         },
         // {
+        //     id: 'notification',
+        //     title: 'お知らせ',
+        //     type: 'item',
+        //     url: '/teachers/notifications',
+        //     icon: icons.LuMail,
+        //     breadcrumbs: false
+        // },
+        {
+            id: 'trial-accept',
+            title: '無料申請許可',
+            type: 'item',
+            icon: icons.LuMail,
+            url: '/admin/applications/trial',
+            breadcrumbs: false
+        },
+        // {
         //     id: 'domains',
         //     title: 'ドメイン管理',
         //     type: 'collapse',

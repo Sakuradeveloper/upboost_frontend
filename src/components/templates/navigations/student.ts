@@ -1,4 +1,4 @@
-import { AiOutlineHome, AiFillSchedule, AiFillWechat, AiFillHome, AiOutlinePercentage } from 'react-icons/ai';
+import { AiOutlineHome, AiFillSchedule, AiFillWechat, AiFillHome, AiOutlinePercentage, AiTwotoneContacts } from 'react-icons/ai';
 import { RiCustomerService2Line } from 'react-icons/ri';
 import { IoMailUnreadOutline } from 'react-icons/io5';
 import { VscNotebookTemplate } from 'react-icons/vsc';
@@ -12,7 +12,8 @@ const icons = {
     AiFillSchedule,
     AiFillWechat,
     AiFillHome,
-    AiOutlinePercentage
+    AiOutlinePercentage,
+    AiTwotoneContacts
 };
 
 // ==============================|| EXTRA PAGES MENU ITEMS ||============================== //
@@ -44,6 +45,14 @@ const pages = {
             type: 'item',
             url: '/students/progress',
             icon: icons.AiOutlinePercentage,
+            breadcrumbs: false
+        },
+        {
+            id: 'progress',
+            title: '講義申請',
+            type: 'item',
+            url: '/students/students/application',
+            icon: icons.AiTwotoneContacts,
             breadcrumbs: false
         },
         {

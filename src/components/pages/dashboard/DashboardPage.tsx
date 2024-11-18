@@ -4,11 +4,11 @@ import MainPannel from '@/components/atoms/MainPannel';
 const DashboardPage = () => {
     return (
         <>
-        <TitleBar>dashboard</TitleBar>
+        <TitleBar>トップページ</TitleBar>
 
         <MainPannel>
             {/* <Filter /> */}
-            <>dashboard</>
+            <>トップページ</>
             {/* <TablePagination /> */}
             {/* <>userlist</> */}
         </MainPannel>

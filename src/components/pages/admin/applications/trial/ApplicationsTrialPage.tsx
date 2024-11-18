@@ -12,11 +12,11 @@ import { useAuth } from '@/contexts/AuthContext';
 import { fetchNotification, fetchNotificationTable } from '@/store/features/notification';
 
 const NotificationAdminPage = () => {
-    const dispatch = useAppDispatch();
+    // const dispatch = useAppDispatch();
 
-    const {user} = useAuth();
-    const filter = useAppSelector(state => state.backup.items.filter);
-    const result = useAppSelector(state => state.notification.items.result);
+    // const {user} = useAuth();
+    // const filter = useAppSelector(state => state.backup.items.filter);
+    // const result = useAppSelector(state => state.notification.items.result);
 
     // useEffect(() => {
     //     return () => {

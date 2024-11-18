@@ -28,14 +28,13 @@ const ApplicationTrialTable = ({ search_url }: Props) => {
     // const filter = useAppSelector(state => state.customer.items.filter);
     // const result = useAppSelector(state => state.customer.items.result);
     const result = useAppSelector(state => state.trial?.items.result);
-
+    console.log("result : ", result)
     const data = {
         id:user?.id,
         read:true
     }
     useEffect(()=>{
         if(user?.id){
-            console.log("++++++++++++++++++>>>>>>>>>>>>>>>>>>>>>>>>>>")
             // if(user?.role.role_id =='admin')
             //     dispatch(fetchNotificationTableAdmin(user?.id))
             // else if(user?.role.role_id =='teacher')
@@ -76,10 +75,8 @@ const ApplicationTrialTable = ({ search_url }: Props) => {
                         <TableCell>番号</TableCell>
                         <TableCell>名前</TableCell>
                         <TableCell>言語を選択</TableCell>
-                        <TableCell>第1希望日</TableCell>
-                        <TableCell>第1希望時間帯</TableCell>
-                        <TableCell>第2希望日</TableCell>
-                        <TableCell>第2希望時間帯</TableCell>
+                        <TableCell>望日</TableCell>
+                        <TableCell>望時間帯</TableCell>
                         <TableCell>状態</TableCell>
                     </TableRow>
                     </TableHead>
@@ -121,10 +118,8 @@ const ApplicationTrialTable = ({ search_url }: Props) => {
                                 {row.user_name}
                             </TableCell>
                             <TableCell>{row.user_major}</TableCell>
-                            <TableCell>{row.first_date}</TableCell>
-                            <TableCell>{row.first_time}</TableCell>
-                            <TableCell>{row.second_date}</TableCell>
-                            <TableCell>{row.second_time}</TableCell>
+                            <TableCell>{row?.schedule.date}</TableCell>
+                            <TableCell className='flex items-center'>{row?.schedule.start_time} ~ {row?.schedule.end_time}</TableCell>
                             <TableCell>
                                 <Button
                                 variant="contained"

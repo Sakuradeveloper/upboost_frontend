@@ -27,7 +27,7 @@ const LecturePage = () => {
     console.log(chapter, "========>>>>>>>>>>>", subject)
     return (
         <>
-            <TitleBar href='/admin/subjects'>教科書管理</TitleBar>
+            <TitleBar href='/admin/lecture'>教科書管理</TitleBar>
             <MainPannel>
                 {/* <SubjectList /> */}
                 {subject ? <ChapterList id = {subject}/> : chapter ? <SubjectList/> : <SubjectList/>}

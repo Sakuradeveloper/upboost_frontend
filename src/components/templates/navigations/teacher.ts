@@ -2,6 +2,7 @@ import { AiFillSchedule, AiOutlineHome, AiOutlineUser, AiFillWechat, AiFillRedEn
 import { RiCustomerService2Line, RiMessage2Fill, RiSecurePaymentFill } from 'react-icons/ri';
 import { IoMailUnreadOutline } from 'react-icons/io5';
 import { VscNotebookTemplate } from 'react-icons/vsc';
+import { LuUsers, LuMail, LuBook, LuBookX } from 'react-icons/lu';
 
 // constant
 const icons = {
@@ -15,6 +16,7 @@ const icons = {
     RiMessage2Fill,
     AiFillWechat, 
     AiFillRedEnvelope,
+    LuMail
 };
 
 // ==============================|| EXTRA PAGES MENU ITEMS ||============================== //
@@ -48,14 +50,14 @@ const pages = {
             icon: icons.AiOutlineUser,
             breadcrumbs: false
         },
-        {
-            id: 'pay',
-            title: '決済管理',
-            type: 'item',
-            url: '/customer/schedule',
-            icon: icons.RiSecurePaymentFill,
-            breadcrumbs: false
-        },
+        // {
+        //     id: 'pay',
+        //     title: '決済管理',
+        //     type: 'item',
+        //     url: '/customer/schedule',
+        //     icon: icons.RiSecurePaymentFill,
+        //     breadcrumbs: false
+        // },
         // {
         //     id: 'student',
         //     title: '支払い管理',
@@ -64,19 +66,19 @@ const pages = {
         //     icon: icons.RiSecurePaymentFill,
         //     breadcrumbs: false
         // },
-        {
-            id: 'application',
-            title: 'お知らせ',
-            type: 'item',
-            url: '/teachers/applications/trial',
-            icon: icons.AiFillRedEnvelope,
-            breadcrumbs: false
-        },
+        // {
+        //     id: 'application',
+        //     title: '無料試聴一覧',
+        //     type: 'item',
+        //     icon: icons.LuMail,
+        //     url: '/teachers/applications/trial',
+        //     breadcrumbs: false
+        // },
         {
             id: 'notification',
-            title: 'お知らせ',
+            title: '無料試聴一覧',
             type: 'item',
-            url: '/teachers/notifications',
+            url: '/teachers/applications/trial',
             icon: icons.RiMessage2Fill,
             breadcrumbs: false
         },

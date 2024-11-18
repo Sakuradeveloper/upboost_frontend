@@ -39,10 +39,9 @@ const ApplicationTableAdmin = ({ search_url }: Props) => {
     const dispatch = useAppDispatch();
 
     const [currentUserId, setCurrentUserId] = useState<number | null>(null);
-    const filter = useAppSelector(state => state.customer.items.filter);
     // const result = useAppSelector(state => state.customer.items.result);
     const result = useAppSelector(state => state.trial?.items.result);
-
+    console.log("??>>???????????>>>>>>>>>>>>", result.data)
     const data = {
         id:user?.id,
         read:true

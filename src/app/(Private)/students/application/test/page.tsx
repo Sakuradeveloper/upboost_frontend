@@ -3,8 +3,8 @@
 import dynamic from 'next/dynamic';
 import Loading from '@/components/templates/Loading';
 
-const Application = dynamic(() => import('@/components/pages/customers/students/application/ApplicationTabPage'), {
-    // const Application = dynamic(() => import('@/components/pages/customers/students/application/ApplicationFormPage'), {
+// const Application = dynamic(() => import('@/components/pages/customers/students/application/ApplicationTabPage'), {
+    const Application = dynamic(() => import('@/components/pages/customers/students/application/ApplicationFormPage'), {
     loading: () => <Loading />
 });
 

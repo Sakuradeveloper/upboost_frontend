@@ -10,7 +10,6 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setCurrentItemValue, clearCurrentItem, setError, fetchSchedules, setResult, addEvent } from '@/store/features/schedule';
 import { useAuth } from '@/contexts/AuthContext';
 import { postRequest } from "@/utils/axios";
-import { useRouter } from "next/navigation";
 
 // Custom theme colors
 const themeColors = {
@@ -22,7 +21,6 @@ const themeColors = {
 };
 
 const ScheduleTitle = () => {
-  const router = useRouter()
   const { user } = useAuth();
 
   const [open, setOpen] = useState(false);
@@ -35,15 +33,15 @@ const ScheduleTitle = () => {
   const handleAddEvent = async (e: React.FormEvent) => {
 
     e.preventDefault();
-    
+    if (!current.date || !current.start_time || !current.end_time) {
+      return dispatch(setError('All fields are required.'));
+    }
     const res = await postRequest(`/v0/teacher/schedule/create`, current);
     if (res.status === 200) {
       console.log(res.data, " : data : ")
-      // dispatch(setResult({data: [], total: 0}))
-      // dispatch(fetchSchedules(user?.id));
       dispatch(addEvent(res.data.data))
       dispatch(clearCurrentItem());
-      handleClose(); // Close modal on successful event addition
+      handleClose();
     } else if (res.status === 422 && res.data.errors) {
       dispatch(setError(res.data.errors));
     }
@@ -57,11 +55,12 @@ const ScheduleTitle = () => {
         onClose={handleClose}
         closeAfterTransition
         sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        aria-labelledby="add-schedule-title"
       >
         <Fade in={open}>
           <Card sx={{ width: { xs: '90%', sm: '500px' }, margin: 'auto' }}>
             <CardContent sx={{ p: { xs: 2, sm: 4 } }}>
-              <Typography variant="h6" sx={{ mb: 2, color: themeColors.textPrimary }}>
+              <Typography id="add-schedule-title" variant="h6" sx={{ mb: 2, color: themeColors.textPrimary }}>
                 スケジュールを追加してください。
               </Typography>
               <Box
@@ -73,101 +72,55 @@ const ScheduleTitle = () => {
                   gap: 2,
                 }}
               >
-                {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker
-                    label="日付選択 *"
-                    value={dayjs(current.date, 'YYYY-MM-DD')}
-                    onChange={(newValue) =>
-                      newValue && dispatch(setCurrentItemValue({ date: newValue.format('YYYY-MM-DD'), teacher_id: user?.id }))
-                    }
-                  />
-                  <TimePicker
-                    label="開始時間 *"
-                    value={dayjs(`${current.date} ${current.start_time}`, 'HH:mm')}
-                    timeSteps={{ hours: 1, minutes: 30}}
-                    // maxTime={dayjs(`${current.date} ${current.end_time}`, 'HH:mm')}
-                    onChange={(newValue) =>
-                      newValue && dispatch(setCurrentItemValue({ start_time: newValue.format('HH:mm') }))
-                    }
-                  />
-                  <TimePicker
-                    label="終了時間 *"
-                    value={dayjs(`${current.date} ${current.end_time}`, 'HH:mm')}
-                    timeSteps={{ hours: 1, minutes: 30}}
-                    // minTime={dayjs(`${current.date} ${current.start_time}`, 'HH:mm')}
-                    onChange={(newValue) =>
-                      newValue && dispatch(setCurrentItemValue({ end_time: newValue.format('HH:mm') }))
-                    }
-                  />
-                </LocalizationProvider> */}
-
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
                     label="日付選択 *"
                     value={current.date ? dayjs(current.date, 'YYYY-MM-DD') : null}
+                    minDate={dayjs()}
                     onChange={(newValue) =>
                       newValue && dispatch(setCurrentItemValue({ date: newValue.format('YYYY-MM-DD'), teacher_id: user?.id }))
                     }
                   />
                   <TimePicker
                     label="開始時間 *"
-                    value={current.start_time ? dayjs(`${current.date} ${current.start_time}`, 'HH:mm') : null}
-                    maxTime={current.end_time ? dayjs(`${current.date} ${current.end_time}`, 'HH:mm') : undefined} // Ensure start_time <= end_time
-                    timeSteps={{ hours: 1, minutes: 30}}
-                    onChange={(newValue) =>
-                      newValue && dispatch(setCurrentItemValue({ start_time: newValue.format('HH:mm') }))
+                    value={
+                      current.start_time && current.date
+                        ? dayjs(`${current.date} ${current.start_time}`, 'YYYY-MM-DD HH:mm')
+                        : null
                     }
-                  />
+                    maxTime={
+                      current.end_time && current.date
+                        ? dayjs(`${current.date} ${current.end_time}`, 'YYYY-MM-DD HH:mm').subtract(1, 'minute') // Ensure start_time < end_time
+                        : undefined
+                    }
+                    timeSteps={{ hours: 1, minutes: 30 }}
+                    onChange={(newValue) => {
+                      if (newValue) {
+                        dispatch(setCurrentItemValue({ start_time: newValue.format('HH:mm') }));
+                      }
+                    }}
+                  /> 
+
                   <TimePicker
                     label="終了時間 *"
-                    value={current.end_time ? dayjs(`${current.date} ${current.end_time}`, 'HH:mm') : null}
-                    minTime={current.start_time ? dayjs(`${current.date} ${current.start_time}`, 'HH:mm') : undefined} // Ensure end_time >= start_time
-                    timeSteps={{ hours: 1, minutes: 30}}
-                    onChange={(newValue) =>
-                      newValue && dispatch(setCurrentItemValue({ end_time: newValue.format('HH:mm') }))
+                    value={
+                      current.end_time && current.date
+                        ? dayjs(`${current.date} ${current.end_time}`, 'YYYY-MM-DD HH:mm')
+                        : null
                     }
+                    minTime={
+                      current.start_time && current.date
+                        ? dayjs(`${current.date} ${current.start_time}`, 'YYYY-MM-DD HH:mm').add(1, 'minute') // Ensure end_time > start_time
+                        : undefined
+                    }
+                    timeSteps={{ hours: 1, minutes: 30 }}
+                    onChange={(newValue) => {
+                      if (newValue) {
+                        dispatch(setCurrentItemValue({ end_time: newValue.format('HH:mm') }));
+                      }
+                    }}
                   />
                 </LocalizationProvider>
-
-                {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <FormControl error={!current.date} fullWidth>
-                    <DatePicker
-                      label="日付選択 *"
-                      value={current.date ? dayjs(current.date, 'YYYY-MM-DD') : null}
-                      onChange={(newValue) =>
-                        newValue && dispatch(setCurrentItemValue({ date: newValue.format('YYYY-MM-DD'), teacher_id: user?.id }))
-                      }
-                    />
-                    {!current.date && <FormHelperText>日付を選択してください。</FormHelperText>}
-                  </FormControl>
-
-                  <FormControl error={!current.start_time} fullWidth>
-                    <TimePicker
-                      label="開始時間 *"
-                      value={current.date && current.start_time ? dayjs(`${current.date} ${current.start_time}`, 'HH:mm') : undefined}
-                      timeSteps={{ hours: 1, minutes: 30 }}
-                      maxTime={current.date && current.end_time ? dayjs(`${current.date} ${current.end_time}`, 'HH:mm') : undefined}
-                      onChange={(newValue) =>
-                        newValue && dispatch(setCurrentItemValue({ start_time: newValue.format('HH:mm') }))
-                      }
-                    />
-                    {!current.start_time && <FormHelperText>開始時間を選択してください。</FormHelperText>}
-                  </FormControl>
-
-                  <FormControl error={!current.end_time} fullWidth>
-                    <TimePicker
-                      label="終了時間 *"
-                      value={current.date && current.end_time ? dayjs(`${current.date} ${current.end_time}`, 'HH:mm') : null}
-                      timeSteps={{ hours: 1, minutes: 30 }}
-                      minTime={current.date && current.start_time ? dayjs(`${current.date} ${current.start_time}`, 'HH:mm') : undefined}
-                      onChange={(newValue) =>
-                        newValue && dispatch(setCurrentItemValue({ end_time: newValue.format('HH:mm') }))
-                      }
-                    />
-                    {!current.end_time && <FormHelperText>終了時間を選択してください。</FormHelperText>}
-                  </FormControl>
-                </LocalizationProvider> */}
-
                 <Button
                   type="submit"
                   variant="contained"

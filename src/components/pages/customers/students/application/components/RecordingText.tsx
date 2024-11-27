@@ -29,8 +29,8 @@ const RecordingText: React.FC<RecordingTextProps> = ({ handleTab }) => {
 					onChange={(e) => dispatch(setCurrentItemValue({ recording: e.target.value }))}
 					sx={{ marginBottom: 2 }}
 				>
-					<FormControlLabel value="yes" control={<Radio />} label="はい (1レッスンあたり +275円/月額)" />
-					<FormControlLabel value="no" control={<Radio />} label="いいえ" />
+					<FormControlLabel value="true" control={<Radio />} label="はい (1レッスンあたり +275円/月額)" />
+					<FormControlLabel value="false" control={<Radio />} label="いいえ" />
 				</RadioGroup>
 				{result.errors.recording && <FormHelperText error>必須です。</FormHelperText>}
 			</FormControl>
@@ -48,7 +48,7 @@ const RecordingText: React.FC<RecordingTextProps> = ({ handleTab }) => {
 					value={result.form.book}
 					onChange={(e) => dispatch(setCurrentItemValue({ book: e.target.value }))}
 				>
-					<FormControlLabel value="yes" control={<Radio />} label="究極のベトナム語攻略ブック 初級編(1-20頁) (1,400円) [PDF]" />
+					<FormControlLabel value="true" control={<Radio />} label="究極のベトナム語攻略ブック 初級編(1-20頁) (1,400円) [PDF]" />
 				</RadioGroup>
 				{result.errors.book && <FormHelperText error>必須です。</FormHelperText>}
 			</FormControl>
@@ -67,8 +67,8 @@ const RecordingText: React.FC<RecordingTextProps> = ({ handleTab }) => {
 					value={result.form.vocabulary}
 					onChange={(e) => dispatch(setCurrentItemValue({ vocabulary: e.target.value }))}
 				>
-					<FormControlLabel value="yes" control={<Radio />} label="はい (1レッスンあたり +275円/月額)" />
-					<FormControlLabel value="no" control={<Radio />} label="いいえ" />
+					<FormControlLabel value="true" control={<Radio />} label="はい (1レッスンあたり +275円/月額)" />
+					<FormControlLabel value="false" control={<Radio />} label="いいえ" />
 				</RadioGroup>
 				{result.errors.vocabulary && <FormHelperText error>必須です。</FormHelperText>}
 			</FormControl>

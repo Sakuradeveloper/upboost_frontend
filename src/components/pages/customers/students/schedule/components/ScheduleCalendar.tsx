@@ -45,6 +45,7 @@ const ScheduleCalendar = ( {events} : Props)  => {
 
     const handleOpenModal = (event: any) => {
       setSelectedEvent(event);
+      console.log("event : ", event)
       setOpenModal(true);
     };
 
@@ -106,7 +107,7 @@ const ScheduleCalendar = ( {events} : Props)  => {
         const start_time = dayjs(start).format('YYYY-MM-DD HH:mm');
         const end_time = dayjs(end).format('YYYY-MM-DD HH:mm');
         // Send the update request to the API
-        postRequest(`/v0/student/schedule/${user?.id}`, {
+        postRequest(`/v0/student/schedule/complete/${user?.id}`, {
             schedule_id:id,
             title,
             start_time: start_time,
@@ -257,7 +258,33 @@ const ScheduleCalendar = ( {events} : Props)  => {
     return (
       <>
         <ScheduleXCalendar calendarApp={calendar} />
-        {/* <Dialog
+        {selectedEvent?._meeting && ((selectedEvent?.calendarId === "accepted") ? 
+        <Dialog
+          open={openModal}
+          onClose={handleCloseModal}
+          fullWidth
+          maxWidth="sm"
+        >
+          <DialogTitle sx={{fontSize: '4rem'}} >講義を始めますか？</DialogTitle>
+          {/* <DialogContent>
+            <DialogContentText>
+              講義を始めますか？
+            </DialogContentText>
+            {selectedEvent && (
+              <Link href={selectedEvent._meeting}>Zoom meeting</Link>
+            )}
+          </DialogContent> */}
+          <DialogActions>
+            <Button onClick={handleCloseModal} color="secondary">
+              拒否する
+            </Button>
+            <Button onClick={()=>handleLecture(selectedEvent._meeting)} color="primary">
+              受け入れる
+            </Button>
+          </DialogActions>
+        </Dialog>:
+        (selectedEvent?.calendarId === "pending") ?
+        <Dialog
           open={openModal}
           onClose={handleCloseModal}
           fullWidth
@@ -283,31 +310,10 @@ const ScheduleCalendar = ( {events} : Props)  => {
               受け入れる
             </Button>
           </DialogActions>
-        </Dialog> */}
-        <Dialog
-          open={openModal}
-          onClose={handleCloseModal}
-          fullWidth
-          maxWidth="sm"
-        >
-          <DialogTitle>講義を始めますか？</DialogTitle>
-          {/* <DialogContent>
-            <DialogContentText>
-              講義を始めますか？
-            </DialogContentText>
-            {selectedEvent && (
-              <Link href={selectedEvent._meeting}>Zoom meeting</Link>
-            )}
-          </DialogContent> */}
-          <DialogActions>
-            <Button onClick={()=>handleLecture(selectedEvent._meeting)} color="secondary">
-              拒否する
-            </Button>
-            <Button onClick={handleAgree} color="primary">
-              受け入れる
-            </Button>
-          </DialogActions>
-        </Dialog>
+        </Dialog>:<></>)
+        }
+        
+        
       </>
     )
 }

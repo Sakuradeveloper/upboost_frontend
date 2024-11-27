@@ -19,7 +19,7 @@ const CheckoutForm = () => {
     const result = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: 'https://example.com/payment-success',  // Redirect URL after success
+        return_url: 'https://loanvietnam.net/students/application/sucess',
       },
     });
 

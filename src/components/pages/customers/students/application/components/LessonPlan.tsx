@@ -20,7 +20,7 @@ const LessonPlan: React.FC<{ handleTab: (value: string) => void }> = ({ handleTa
           onChange={e => dispatch(setCurrentItemValue({ plan: e.target.value, otherPlan: '' }))} 
           sx={{ display: 'flex', flexDirection: 'column' }}
         >
-          {["lesson2", "lesson4", "lesson8", "lesson12", "lesson16"].map((plan, index) => (
+          {["4", "6", "8", "10", "12"].map((plan, index) => (
             <FormControlLabel 
               key={plan} 
               value={plan} 

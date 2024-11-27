@@ -51,7 +51,7 @@ const pages = {
             id: 'progress',
             title: '講義申請',
             type: 'item',
-            url: '/students/students/application',
+            url: '/students/application',
             icon: icons.AiTwotoneContacts,
             breadcrumbs: false
         },

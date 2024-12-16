@@ -34,7 +34,8 @@ const Payment: React.FC<PaymentProps> = ({ handleTab }) => {
     setLoading(true);
     try {
       const response = await postRequest(`v0/student/create-subscription/`, {
-        duration, // Send the selected duration to the backend
+        duration: '3_month',
+        apply_info: result.form,
         user_email: user?.email,
       });
       console.log("response.data : ", response.data);
@@ -51,7 +52,7 @@ const Payment: React.FC<PaymentProps> = ({ handleTab }) => {
 
   return (
     <Box sx={{ padding: 3, backgroundColor: '#f4f6f8', borderRadius: 2, boxShadow: 2, maxWidth: 600, margin: 'auto' }}>
-      <FormControl component="fieldset">
+      {/* <FormControl component="fieldset">
         <FormLabel component="legend">プランを選択してください</FormLabel>
         <RadioGroup
           value={duration}
@@ -62,7 +63,7 @@ const Payment: React.FC<PaymentProps> = ({ handleTab }) => {
           <FormControlLabel value="12_month" control={<Radio />} label="12ヶ月プラン" />
         </RadioGroup>
         <FormHelperText>プランを選択してください</FormHelperText>
-      </FormControl>
+      </FormControl> */}
 
       {loading ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 2 }}>

@@ -1,8 +1,10 @@
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 import { useState } from 'react';
 import { Box, Button, Typography } from "@mui/material";
+import { useAuth } from '@/contexts/AuthContext';
 
 const CheckoutForm = () => {
+  const {user} = useAuth();
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState<string>('');
@@ -19,14 +21,13 @@ const CheckoutForm = () => {
     const result = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: 'https://loanvietnam.net/students/application/sucess',
+        return_url: `https://loanvietnam.net/students/application/sucess?user=${user?.id}`,
       },
     });
 
     if (result.error) {
       setErrorMessage(result.error.message || "支払い中にエラーが発生しました。");
     }
-    console.log("success")
 
     setIsProcessing(false);
   };

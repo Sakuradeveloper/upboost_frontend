@@ -54,7 +54,8 @@ const pages = {
                     title: 'レッスンリスト',
                     type: 'item',
                     url: '/admin/lecture/',
-                    target: true
+                    target: true,
+		    icon: icons.LuBook,
                 },
                 // {
                 //     id: 'lecture-create',

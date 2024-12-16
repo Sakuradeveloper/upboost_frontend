@@ -13,6 +13,7 @@ type State = {
             major:string;
             avatar?: File|null;
             avatar_url?:string;
+            meeting?: string;
         };
         errors: any;
     };

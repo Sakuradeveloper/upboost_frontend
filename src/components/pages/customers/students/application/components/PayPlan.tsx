@@ -37,10 +37,10 @@ const PayPlan: React.FC<PayPlanProps> = ({ handleTab }) => {
           value={result.form.payment}
           onChange={(e) => dispatch(setCurrentItemValue({ payment: e.target.value }))}
         >
-          <FormControlLabel value="1" control={<Radio />} label="月払い" />
-          <FormControlLabel value="3" control={<Radio />} label="3ヶ月一括払い[※毎月300円割引、合計900円割引]" />
-          <FormControlLabel value="6" control={<Radio />} label="6ヶ月一括払い[※毎月500円割引、合計3,000円割引]" />
-          <FormControlLabel value="12" control={<Radio />} label="12ヶ月一括払い[※毎月750円割引、合計9,000円割引]" />
+          <FormControlLabel value="1_month" control={<Radio />} label="月払い" />
+          <FormControlLabel value="3_month" control={<Radio />} label="3ヶ月一括払い[※毎月300円割引、合計900円割引]" />
+          <FormControlLabel value="6_month" control={<Radio />} label="6ヶ月一括払い[※毎月500円割引、合計3,000円割引]" />
+          <FormControlLabel value="12_month" control={<Radio />} label="12ヶ月一括払い[※毎月750円割引、合計9,000円割引]" />
         </RadioGroup>
         {result.errors.payment && (
           <FormHelperText error sx={{ color: 'error.main', marginTop: 1 }}>

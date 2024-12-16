@@ -265,7 +265,7 @@ const ScheduleCalendar = ( {events} : Props)  => {
           fullWidth
           maxWidth="sm"
         >
-          <DialogTitle sx={{fontSize: '4rem'}} >講義を始めますか？</DialogTitle>
+          <DialogTitle sx={{fontSize: '2rem', color: 'secondary'}} >講義を始めますか？</DialogTitle>
           {/* <DialogContent>
             <DialogContentText>
               講義を始めますか？
@@ -290,7 +290,7 @@ const ScheduleCalendar = ( {events} : Props)  => {
           fullWidth
           maxWidth="sm"
         >
-          <DialogTitle>講義予約</DialogTitle>
+          <DialogTitle sx={{fontSize: '2rem', color: 'secondary'}} >講義予約</DialogTitle>
           <DialogContent>
             <DialogContentText>
               講義を予約しますか？

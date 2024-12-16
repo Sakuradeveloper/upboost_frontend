@@ -62,22 +62,22 @@ const ApplicationTableAdmin = ({ search_url }: Props) => {
         console.log(`Accepted: ${id}`);
         try {
             // Dispatch the acceptApplication thunk and wait for it to resolve
-            const resultAction = await dispatch(allowApplicationTrial(id));
+            await dispatch(allowApplicationTrial(id)).then((res) =>{
+              dispatch(appendMessage({ type: 'success', message: '管理者が承認するまでお待ちください。' }));
+            }).catch((e)=>{
+              dispatch(appendMessage({ type: 'success', message: '管理者が承認するまでお待ちください。' }));
+            });
     
             // Unwrap the result to access the actual payload or throw an error if it failed
-            const response = unwrapResult(resultAction);
             
             // After successfully unwrapping, dispatch a success message
-            dispatch(appendMessage({ type: 'success', message: '管理者が承認するまでお待ちください。' }));
+            // dispatch(appendMessage({ type: 'success', message: '管理者が承認するまでお待ちください。' }));
     
         } catch (error) {
             console.error('Error during accept request:', error);
             // Handle any errors here, optionally dispatch an error action
-            dispatch(appendMessage({ type: 'error', message: 'An error occurred while processing your request.' }));
-        } finally {
-            // Reset the pending state or loading state
-            // setPending!(false);
-        }
+            dispatch(appendMessage({ type: 'error', message: 'リクエストの処理中にエラーが発生しました。' }));
+        } 
     };
 
     return (

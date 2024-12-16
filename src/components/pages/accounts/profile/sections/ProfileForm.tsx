@@ -215,6 +215,21 @@ const ProfileForm = () => {
                             </div>
                         </div>
                     )}
+                    {user?.role.role_id == 'teacher' && ( 
+                        <div className='flex flex-col sm:flex-row sm:items-start gap-[4px] sm:gap-[16px]'>
+                            <FormLabel className='min-w-[134px] mt-[10px]'>マイページURL</FormLabel>
+                            <div className='w-full lg:max-w-[420px] flex gap-[8px]'>
+                                <TextField
+                                    size='small'
+                                    fullWidth
+                                    value={currentItem.meeting}
+                                    onChange={e => dispatch(setCurrentItemValue({ meeting: e.target.value }))}
+                                    error={errors.meeting ? true : false}
+                                    helperText={errors.meeting ? errors.meeting : ''}
+                                />
+                            </div>
+                        </div>
+                    )}
                     {/*<FormControl required component="fieldset" error={errors.vietnameseDialect}>
                       <FormLabel component="legend">どのベトナム語をメインに学習したいですか？</FormLabel>
                       <RadioGroup name="vietnameseDialect" value={formData.vietnameseDialect} onChange={handleChange} row sx={{display: 'grid', 

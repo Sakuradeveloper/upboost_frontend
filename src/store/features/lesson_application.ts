@@ -16,7 +16,7 @@ type State = {
             startDate:string|null;
             reason:string|null;
 			id?: number;
-			name: string;
+			name?: string;
 			email:string;
 			confirmEmail:string;
 			nameKana: string;
